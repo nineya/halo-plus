@@ -1,0 +1,103 @@
+package com.nineya.haloplus.controller.content;
+
+import java.io.IOException;
+import javax.servlet.http.HttpServletResponse;
+
+import com.nineya.haloplus.config.properties.HaloProperties;
+import com.nineya.haloplus.model.entity.User;
+import com.nineya.haloplus.model.properties.BlogProperties;
+import com.nineya.haloplus.model.properties.PrimaryProperties;
+import com.nineya.haloplus.model.support.HaloConst;
+import com.nineya.haloplus.service.OptionService;
+import com.nineya.haloplus.service.UserService;
+import com.nineya.haloplus.utils.HaloUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.nineya.haloplus.exception.NotFoundException;
+import com.nineya.haloplus.exception.ServiceException;
+
+/**
+ * Main controller.
+ *
+ * @author ryanwang
+ * @date 2019-04-23
+ */
+@Controller
+public class MainController {
+
+    /**
+     * Index redirect uri.
+     */
+    private static final String INDEX_REDIRECT_URI = "index.html";
+
+    /**
+     * Install redirect uri.
+     */
+    private static final String INSTALL_REDIRECT_URI = INDEX_REDIRECT_URI + "#install";
+
+    private final UserService userService;
+
+    private final OptionService optionService;
+
+    private final HaloProperties haloProperties;
+
+    public MainController(UserService userService, OptionService optionService,
+        HaloProperties haloProperties) {
+        this.userService = userService;
+        this.optionService = optionService;
+        this.haloProperties = haloProperties;
+    }
+
+    @GetMapping("${halo.admin-path:admin}")
+    public String admin() throws IOException {
+        return HaloUtils.ensureBoth(haloProperties.getAdminPath(), HaloUtils.URL_SEPARATOR)
+            + INDEX_REDIRECT_URI;
+    }
+
+    @GetMapping("version")
+    @ResponseBody
+    public String version() {
+        return HaloConst.HALO_VERSION;
+    }
+
+    @GetMapping("install")
+    public String installation() throws IOException {
+        boolean isInstalled = optionService
+            .getByPropertyOrDefault(PrimaryProperties.IS_INSTALLED, Boolean.class, false);
+        if (!isInstalled) {
+            return StringUtils.appendIfMissing(this.haloProperties.getAdminPath(), "/")
+                + INSTALL_REDIRECT_URI;
+        } else {
+            throw new NotFoundException("404");
+        }
+    }
+
+    @GetMapping("avatar")
+    public void avatar(HttpServletResponse response) throws IOException {
+        User user =
+            userService.getCurrentUser().orElseThrow(() -> new ServiceException("未查询到博主信息"));
+        if (StringUtils.isNotEmpty(user.getAvatar())) {
+            response.sendRedirect(HaloUtils.normalizeUrl(user.getAvatar()));
+        }
+    }
+
+    @GetMapping("logo")
+    public void logo(HttpServletResponse response) throws IOException {
+        String blogLogo =
+            optionService.getByProperty(BlogProperties.BLOG_LOGO).orElse("").toString();
+        if (StringUtils.isNotEmpty(blogLogo)) {
+            response.sendRedirect(HaloUtils.normalizeUrl(blogLogo));
+        }
+    }
+
+    @GetMapping("favicon.ico")
+    public void favicon(HttpServletResponse response) throws IOException {
+        String favicon =
+            optionService.getByProperty(BlogProperties.BLOG_FAVICON).orElse("").toString();
+        if (StringUtils.isNotEmpty(favicon)) {
+            response.sendRedirect(HaloUtils.normalizeUrl(favicon));
+        }
+    }
+}

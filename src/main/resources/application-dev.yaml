@@ -58,7 +58,7 @@ management:
         include: [ 'httptrace', 'metrics','env','logfile','health' ]
 logging:
   level:
-    run.halo.app: DEBUG
+    com.nineya.haloplus: DEBUG
     org.hibernate: INFO
     org.hibernate.type.descriptor.sql.BasicBinder: INFO
     org.hibernate.type.descriptor.sql.BasicExtractor: INFO

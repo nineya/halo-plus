@@ -5,8 +5,8 @@ plugins {
     id "java"
 }
 
-group = "run.halo.app"
-description = "Halo, An excellent open source blog publishing application."
+group = "com.nineya.haloplus"
+description = "Halo-Plus, An excellent open source blog publishing application."
 sourceCompatibility = JavaVersion.VERSION_11
 
 checkstyle {
@@ -44,7 +44,7 @@ configurations.all {
 
 bootJar {
     manifest {
-        attributes "Implementation-Title": "Halo Application",
+        attributes "Implementation-Title": "Halo-Plus Application",
                 "Implementation-Version": archiveVersion
     }
 }

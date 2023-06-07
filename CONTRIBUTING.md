@@ -1,6 +1,6 @@
 # 开源参与指南
 
-欢迎关注并有想法参与 Halo 的开发，以下是关于如何参与到 Halo 项目的指南，仅供参考。
+欢迎关注并有想法参与 Halo-Plus 的开发，以下是关于如何参与到 Halo-Plus 项目的指南，仅供参考。
 
 ## 发现 Issue
 
@@ -11,10 +11,10 @@
 > 这个步骤非常适合首次贡献者。
 
 在 [halo-dev](https://github.com/halo-dev) 组织下，有非常多的仓库。每个仓库下都有可能包含一些“首次贡献者”友好的 Issue，主要是为了给贡献者提供一个友好的体验。 该类 Issue
-一般会用 `good-first-issue` 标签标记。标签 `good-first-issue` 表示该 Issue 不需要对 Halo 有深入的理解也能够参与。
+一般会用 `good-first-issue` 标签标记。标签 `good-first-issue` 表示该 Issue 不需要对 Halo-Plus 有深入的理解也能够参与。
 
 请点击：[good-first-issue](https://github.com/issues?q=org%3Ahalo-dev+is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22+no%3Aassignee+)
-查看关于 Halo 的 Good First Issue。
+查看关于 Halo-Plus 的 Good First Issue。
 
 ### 认领 Issue
 
@@ -25,7 +25,7 @@ Issue。这样可避免两位贡献者在同一个问题上花时间。
 
 1. Fork 此仓库
 
-   点击 Halo 仓库主页右上角的 `Fork` 按钮即可。
+   点击 Halo-Plus 仓库主页右上角的 `Fork` 按钮即可。
 
 2. Clone 仓库到本地
 
@@ -85,7 +85,7 @@ Issue。这样可避免两位贡献者在同一个问题上花时间。
 - 提交 Pull Request 请充分自测。
 - 每个 Pull Request 尽量只解决一个 Issue，特殊情况除外。
 - 应尽可能多的添加单元测试，其他测试（集成测试和 E2E 测试）可看情况添加。
-- 不论需要解决的 Issue 发生在哪个版本，提交 Pull Request 的时候，请将主仓库的主分支设置为 `master`。例如：即使某个 Bug 于 Halo 1.4.x 被发现，但是提交 Pull Request 仍只针对
+- 不论需要解决的 Issue 发生在哪个版本，提交 Pull Request 的时候，请将主仓库的主分支设置为 `master`。例如：即使某个 Bug 于 Halo-Plus 1.4.x 被发现，但是提交 Pull Request 仍只针对
   `master` 分支，等待 Pull Request 合并之后，我们会通过 `/cherrypick release-1.4` 或者 `/cherry-pick release-1.4` 指令将此 Pull Request
   的修改应用到 `release-1.4` 和 `release-1.5` 分支上。
 

@@ -46,7 +46,7 @@
     <#if options.seo_spider_disabled!false>
         <meta name="robots" content="none">
     </#if>
-    <meta name="generator" content="Halo ${version!}"/>
+    <meta name="generator" content="Halo-Plus ${version!}"/>
     <@favicon />
     <@custom_head />
     <@custom_content_head />

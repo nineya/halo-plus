@@ -25,7 +25,7 @@ spring:
     type: none
 logging:
   level:
-    run.halo.app: DEBUG
+    com.nineya.haloplus: DEBUG
     org.hibernate: ERROR
   file:
     path: ${user.home}/halo-test/logs

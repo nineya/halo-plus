@@ -1,10 +1,10 @@
 <p align="center">
     <a href="https://halo.run" target="_blank" rel="noopener noreferrer">
-        <img width="100" src="https://halo.run/logo" alt="Halo logo" />
+        <img width="100" src="https://halo.run/logo" alt="Halo-Plus logo" />
     </a>
 </p>
 
-<p align="center"><b>Halo</b> [ˈheɪloʊ]，一款现代化的开源博客/CMS系统，值得一试。</p>
+<p align="center"><b>Halo-Plus</b> [ˈheɪloʊ]，一款现代化的开源博客/CMS系统，值得一试。</p>
 
 <p align="center">
 <a href="https://github.com/halo-dev/halo/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/halo-dev/halo.svg?style=flat-square" /></a>

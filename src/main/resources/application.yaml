@@ -57,7 +57,7 @@ management:
       enabled: false
 logging:
   level:
-    run.halo.app: INFO
+    com.nineya.haloplus: INFO
     org.eclipse.jetty.server.HttpChannel: ERROR
   file:
     path: ${halo.work-dir}/logs
