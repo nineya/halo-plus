@@ -62,13 +62,6 @@ public class BasePost extends BaseEntity {
     private PostStatus status;
 
     /**
-     * Post url.
-     */
-    @Deprecated
-    @Column(name = "url")
-    private String url;
-
-    /**
      * Post slug.
      */
     @Column(name = "slug", unique = true)
@@ -81,19 +74,19 @@ public class BasePost extends BaseEntity {
     @ColumnDefault("0")
     private PostEditorType editorType;
 
-    /**
-     * Original content,not format.
-     */
-    @Column(name = "original_content")
-    @Lob
-    private String originalContent;
-
-    /**
-     * Rendered content.
-     */
-    @Column(name = "format_content")
-    @Lob
-    private String formatContent;
+    // /**
+    //  * Original content,not format.
+    //  */
+    // @Column(name = "original_content")
+    // @Lob
+    // private String originalContent;
+    //
+    // /**
+    //  * Rendered content.
+    //  */
+    // @Column(name = "format_content")
+    // @Lob
+    // private String formatContent;
 
     /**
      * Post summary.
@@ -244,18 +237,18 @@ public class BasePost extends BaseEntity {
             version = 1;
         }
 
-        // Clear the value of the deprecated attributes
-        this.originalContent = "";
-        this.formatContent = "";
+        // // Clear the value of the deprecated attributes
+        // this.originalContent = "";
+        // this.formatContent = "";
     }
 
-    @Override
-    protected void preUpdate() {
-        super.preUpdate();
-        // Clear the value of the deprecated attributes
-        this.originalContent = "";
-        this.formatContent = "";
-    }
+    // @Override
+    // protected void preUpdate() {
+    //     super.preUpdate();
+    //     // Clear the value of the deprecated attributes
+    //     this.originalContent = "";
+    //     this.formatContent = "";
+    // }
 
     /**
      * Gets post content.

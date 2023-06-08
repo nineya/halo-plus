@@ -39,13 +39,6 @@ public class Tag extends BaseEntity {
     private String name;
 
     /**
-     * Tag slug name.
-     */
-    @Deprecated
-    @Column(name = "slug_name")
-    private String slugName;
-
-    /**
      * Tag slug.
      */
     @Column(name = "slug", unique = true)
