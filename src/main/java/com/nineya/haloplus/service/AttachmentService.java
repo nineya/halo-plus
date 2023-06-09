@@ -71,6 +71,13 @@ public interface AttachmentService extends CrudService<Attachment, Integer> {
     AttachmentDTO convertToDto(@NonNull Attachment attachment);
 
     /**
+     * List all teams.
+     *
+     * @return list of teams
+     */
+    List<String> listAllTeams();
+
+    /**
      * List all media type.
      *
      * @return list of media type

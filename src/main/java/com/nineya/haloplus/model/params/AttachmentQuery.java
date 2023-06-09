@@ -17,6 +17,8 @@ public class AttachmentQuery {
      */
     private String keyword;
 
+    private String team;
+
     private String mediaType;
 
     private AttachmentType attachmentType;

@@ -42,6 +42,12 @@ public class Attachment extends BaseEntity {
     private String name;
 
     /**
+     * Attachment team name.
+     */
+    @Column(name = "team")
+    private String team;
+
+    /**
      * Attachment access path.
      */
     @Column(name = "path", length = 1023, nullable = false)
@@ -101,6 +107,10 @@ public class Attachment extends BaseEntity {
     @Override
     public void prePersist() {
         super.prePersist();
+
+        if (team == null) {
+            team = "";
+        }
 
         if (fileKey == null) {
             fileKey = "";

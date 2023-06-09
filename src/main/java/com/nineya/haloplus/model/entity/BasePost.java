@@ -74,20 +74,6 @@ public class BasePost extends BaseEntity {
     @ColumnDefault("0")
     private PostEditorType editorType;
 
-    // /**
-    //  * Original content,not format.
-    //  */
-    // @Column(name = "original_content")
-    // @Lob
-    // private String originalContent;
-    //
-    // /**
-    //  * Rendered content.
-    //  */
-    // @Column(name = "format_content")
-    // @Lob
-    // private String formatContent;
-
     /**
      * Post summary.
      */
@@ -236,19 +222,7 @@ public class BasePost extends BaseEntity {
         if (version == null || version < 0) {
             version = 1;
         }
-
-        // // Clear the value of the deprecated attributes
-        // this.originalContent = "";
-        // this.formatContent = "";
     }
-
-    // @Override
-    // protected void preUpdate() {
-    //     super.preUpdate();
-    //     // Clear the value of the deprecated attributes
-    //     this.originalContent = "";
-    //     this.formatContent = "";
-    // }
 
     /**
      * Gets post content.

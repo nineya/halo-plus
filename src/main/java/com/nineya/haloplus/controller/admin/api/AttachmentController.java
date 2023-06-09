@@ -3,14 +3,19 @@ package com.nineya.haloplus.controller.admin.api;
 import static org.springframework.data.domain.Sort.Direction.DESC;
 
 import com.nineya.haloplus.model.dto.AttachmentDTO;
+import com.nineya.haloplus.model.dto.PhotoDTO;
 import com.nineya.haloplus.model.entity.Attachment;
+import com.nineya.haloplus.model.entity.Photo;
 import com.nineya.haloplus.model.enums.AttachmentType;
 import com.nineya.haloplus.model.params.AttachmentParam;
 import com.nineya.haloplus.model.params.AttachmentQuery;
+import com.nineya.haloplus.model.params.PhotoParam;
 import com.nineya.haloplus.service.AttachmentService;
 import io.swagger.annotations.ApiOperation;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 import javax.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -66,6 +71,22 @@ public class AttachmentController {
         return new AttachmentDTO().convertFrom(attachmentService.update(attachment));
     }
 
+    @PutMapping("/batch")
+    @ApiOperation("Updates attachment in batch")
+    public List<AttachmentDTO> updateBatchBy(@RequestBody List<@Valid AttachmentParam> attachmentParams) {
+        List<Attachment> attachmentsToUpdate = attachmentParams.stream()
+            .filter(attachmentParam -> Objects.nonNull(attachmentParam.getId()))
+            .map(attachmentParam -> {
+                Attachment attachmentToUpdate = attachmentService.getById(attachmentParam.getId());
+                attachmentParam.update(attachmentToUpdate);
+                return attachmentToUpdate;
+            })
+            .collect(Collectors.toList());
+        return attachmentService.updateInBatch(attachmentsToUpdate).stream()
+            .map(attachment -> (AttachmentDTO) new AttachmentDTO().convertFrom(attachment))
+            .collect(Collectors.toList());
+    }
+
     @DeleteMapping("{id:\\d+}")
     @ApiOperation("Deletes attachment permanently by id")
     public AttachmentDTO deletePermanently(@PathVariable("id") Integer id) {
@@ -97,6 +118,12 @@ public class AttachmentController {
         }
 
         return result;
+    }
+
+    @GetMapping("teams")
+    @ApiOperation("Lists all of photo teams")
+    public List<String> listTeams() {
+        return attachmentService.listAllTeams();
     }
 
     @GetMapping("media_types")

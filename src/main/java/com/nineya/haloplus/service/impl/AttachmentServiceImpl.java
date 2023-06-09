@@ -82,6 +82,10 @@ public class AttachmentServiceImpl extends AbstractCrudService<Attachment, Integ
         return (root, query, criteriaBuilder) -> {
             List<Predicate> predicates = new LinkedList<>();
 
+            if (attachmentQuery.getTeam() != null) {
+                predicates.add(criteriaBuilder.equal(root.get("team"), attachmentQuery.getTeam()));
+            }
+
             if (attachmentQuery.getMediaType() != null) {
                 predicates.add(
                     criteriaBuilder.equal(root.get("mediaType"), attachmentQuery.getMediaType()));
@@ -210,6 +214,10 @@ public class AttachmentServiceImpl extends AbstractCrudService<Attachment, Integ
         return UriUtils.encode(value, StandardCharsets.UTF_8);
     }
 
+    @Override
+    public List<String> listAllTeams() {
+        return attachmentRepository.findAllTeams();
+    }
 
     @Override
     public List<String> listAllMediaType() {

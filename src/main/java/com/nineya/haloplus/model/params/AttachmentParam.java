@@ -15,8 +15,10 @@ import com.nineya.haloplus.model.entity.Attachment;
 @Data
 public class AttachmentParam implements InputConverter<Attachment> {
 
-    @NotBlank(message = "附件名称不能为空")
+    private Integer id;
+
     @Size(max = 255, message = "附件名称的字符长度不能超过 {max}")
     private String name;
 
+    private String team;
 }

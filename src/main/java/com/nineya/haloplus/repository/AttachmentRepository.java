@@ -20,6 +20,14 @@ public interface AttachmentRepository
     extends BaseRepository<Attachment, Integer>, JpaSpecificationExecutor<Attachment> {
 
     /**
+     * Find all photo teams.
+     *
+     * @return list of teams.
+     */
+    @Query(value = "select distinct a.team from Attachment a")
+    List<String> findAllTeams();
+
+    /**
      * Find all attachment media type.
      *
      * @return list of media type.

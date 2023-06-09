@@ -20,6 +20,8 @@ public class AttachmentDTO implements OutputConverter<AttachmentDTO, Attachment>
 
     private String name;
 
+    private String team;
+
     private String path;
 
     private String fileKey;
