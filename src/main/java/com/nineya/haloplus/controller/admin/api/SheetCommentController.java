@@ -79,8 +79,8 @@ public class SheetCommentController {
     @GetMapping("{sheetId:\\d+}/tree_view")
     @ApiOperation("Lists sheet comments with tree view")
     public Page<BaseCommentVO> listCommentTree(@PathVariable("sheetId") Integer sheetId,
-                                               @RequestParam(name = "page", required = false, defaultValue = "0") int page,
-                                               @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
+        @RequestParam(name = "page", required = false, defaultValue = "0") int page,
+        @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
         return sheetCommentService
             .pageVosAllBy(sheetId, PageRequest.of(page, optionService.getCommentPageSize(), sort));
     }
@@ -88,8 +88,8 @@ public class SheetCommentController {
     @GetMapping("{sheetId:\\d+}/list_view")
     @ApiOperation("Lists sheet comment with list view")
     public Page<BaseCommentWithParentVO> listComments(@PathVariable("sheetId") Integer sheetId,
-                                                      @RequestParam(name = "page", required = false, defaultValue = "0") int page,
-                                                      @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
+        @RequestParam(name = "page", required = false, defaultValue = "0") int page,
+        @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
         return sheetCommentService.pageWithParentVoBy(sheetId,
             PageRequest.of(page, optionService.getCommentPageSize(), sort));
     }

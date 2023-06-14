@@ -14,6 +14,7 @@ public class StringToEnumConverterFactory implements ConverterFactory<String, En
 
     @Override
     @NonNull
+    @SuppressWarnings("unchecked")
     public <T extends Enum<?>> Converter<String, T> getConverter(@NonNull Class<T> targetType) {
         return new StringToEnumConverter(targetType);
     }

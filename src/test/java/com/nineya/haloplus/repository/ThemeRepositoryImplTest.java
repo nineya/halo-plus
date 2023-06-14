@@ -59,7 +59,8 @@ class ThemeRepositoryImplTest {
         expectedTheme.setId(HaloConst.DEFAULT_THEME_ID);
         expectedTheme.setActivated(true);
 
-        given(optionRepository.findByKey(PrimaryProperties.THEME.getValue())).willReturn(Optional.empty());
+        given(optionRepository.findByKey(PrimaryProperties.THEME.getValue())).willReturn(
+            Optional.empty());
         doReturn(Optional.of(expectedTheme)).when(themeRepository)
             .fetchThemePropertyByThemeId(HaloConst.DEFAULT_THEME_ID);
 
@@ -76,7 +77,8 @@ class ThemeRepositoryImplTest {
         expectedTheme.setId(HaloConst.DEFAULT_THEME_ID);
         expectedTheme.setActivated(true);
 
-        given(optionRepository.findByKey(PrimaryProperties.THEME.getValue())).willReturn(Optional.empty());
+        given(optionRepository.findByKey(PrimaryProperties.THEME.getValue())).willReturn(
+            Optional.empty());
         doReturn(Optional.of(expectedTheme)).when(themeRepository)
             .fetchThemePropertyByThemeId(HaloConst.DEFAULT_THEME_ID);
 

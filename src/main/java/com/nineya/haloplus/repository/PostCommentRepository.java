@@ -61,12 +61,11 @@ public interface PostCommentRepository extends BaseCommentRepository<PostComment
      * @param commentIds comment ids must not be null.
      * @return a list of CommentChildrenCountProjection
      */
-    @Query(
-        "select new com.nineya.haloplus.model.projection.CommentChildrenCountProjection(count(comment"
-            + ".id), comment.parentId) "
-            + "from PostComment comment "
-            + "where comment.parentId in ?1 "
-            + "group by comment.parentId")
+    @Query("select new com.nineya.haloplus.model.projection.CommentChildrenCountProjection(count"
+        + "(comment.id), comment.parentId) "
+        + "from PostComment comment "
+        + "where comment.parentId in ?1 "
+        + "group by comment.parentId")
     @NonNull
     @Override
     List<CommentChildrenCountProjection> findDirectChildrenCount(

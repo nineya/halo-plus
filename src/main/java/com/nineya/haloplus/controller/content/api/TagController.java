@@ -64,8 +64,8 @@ public class TagController {
     @GetMapping("{slug}/posts")
     @ApiOperation("Lists posts by tag slug")
     public Page<PostListVO> listPostsBy(@PathVariable("slug") String slug,
-                                        @PageableDefault(sort = {"topPriority", "updateTime"}, direction = DESC)
-            Pageable pageable) {
+        @PageableDefault(sort = {"topPriority", "updateTime"}, direction = DESC)
+        Pageable pageable) {
         // Get tag by slug
         Tag tag = tagService.getBySlugOfNonNull(slug);
 

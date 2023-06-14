@@ -225,8 +225,8 @@ public interface BaseCommentRepository<COMMENT extends BaseComment>
      * @return a list of CommentChildrenCountProjection
      */
     @Query(
-        "select new com.nineya.haloplus.model.projection.CommentChildrenCountProjection(count(comment"
-            + ".id), comment.parentId) "
+        "select new com.nineya.haloplus.model.projection.CommentChildrenCountProjection(count"
+            + "(comment.id), comment.parentId) "
             + "from BaseComment comment "
             + "where comment.parentId in ?1 "
             + "group by comment.parentId")
@@ -243,8 +243,8 @@ public interface BaseCommentRepository<COMMENT extends BaseComment>
      * @return a list of CommentChildrenCountProjection
      */
     @Query(
-        "select new com.nineya.haloplus.model.projection.CommentChildrenCountProjection(count(comment"
-            + ".id), comment.parentId) "
+        "select new com.nineya.haloplus.model.projection.CommentChildrenCountProjection(count"
+            + "(comment.id), comment.parentId) "
             + "from BaseComment comment "
             + "where comment.parentId in ?1 "
             + "and comment.status = ?2 "

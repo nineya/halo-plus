@@ -114,7 +114,8 @@ public class PostModel {
 
             model.addAttribute("slug", post.getSlug());
             model.addAttribute("type", EncryptTypeEnum.POST.getName());
-            if (themeService.templateExists(HaloConst.POST_PASSWORD_TEMPLATE + HaloConst.SUFFIX_FTL)) {
+            if (themeService.templateExists(
+                HaloConst.POST_PASSWORD_TEMPLATE + HaloConst.SUFFIX_FTL)) {
                 return themeService.render(HaloConst.POST_PASSWORD_TEMPLATE);
             }
             return "common/template/" + HaloConst.POST_PASSWORD_TEMPLATE;

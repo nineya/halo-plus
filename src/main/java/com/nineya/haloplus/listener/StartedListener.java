@@ -94,16 +94,19 @@ public class StartedListener implements ApplicationListener<ApplicationStartedEv
 
     private void printStartInfo() {
         String blogUrl = optionService.getBlogBaseUrl();
-        log.info(AnsiOutput.toString(AnsiColor.BRIGHT_BLUE, "Halo-Plus started at         ", blogUrl));
+        log.info(
+            AnsiOutput.toString(AnsiColor.BRIGHT_BLUE, "Halo-Plus started at    ", blogUrl));
         log.info(AnsiOutput
-            .toString(AnsiColor.BRIGHT_BLUE, "Halo-Plus admin started at   ", blogUrl, "/",
+            .toString(AnsiColor.BRIGHT_BLUE, "Halo-Plus admin started at    ", blogUrl, "/",
                 haloProperties.getAdminPath()));
         if (documentationEnabled) {
             log.debug(AnsiOutput
-                .toString(AnsiColor.BRIGHT_BLUE, "Halo-Plus api documentation was enabled at  ", blogUrl,
+                .toString(AnsiColor.BRIGHT_BLUE, "Halo-Plus api documentation was enabled at    ",
+                    blogUrl,
                     "/swagger-ui.html"));
         }
-        log.info(AnsiOutput.toString(AnsiColor.BRIGHT_YELLOW, "Halo-Plus has started successfully!"));
+        log.info(
+            AnsiOutput.toString(AnsiColor.BRIGHT_YELLOW, "Halo-Plus has started successfully!"));
     }
 
     /**

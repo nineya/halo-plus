@@ -115,35 +115,35 @@ class PostCategoryServiceImplTest {
     @Test
     void listPostByCategoryIdTest() {
         List<Post> posts = postCategoryService.listPostBy(1);
-        Assertions.assertEquals(List.of(postService.getById(1), postService.getById(2), postService.getById(3),
+        assertEquals(List.of(postService.getById(1), postService.getById(2), postService.getById(3),
             postService.getById(4)), posts);
     }
 
     @Test
     void listPostByCategoryIdAndStatusTest() {
         List<Post> posts = postCategoryService.listPostBy(1, PostStatus.PUBLISHED);
-        Assertions.assertEquals(List.of(postService.getById(2), postService.getById(3)), posts);
+        assertEquals(List.of(postService.getById(2), postService.getById(3)), posts);
     }
 
     @Test
     void listPostByCategoryIdAndStatusesTest() {
         List<Post> posts =
             postCategoryService.listPostBy(1, Set.of(PostStatus.PUBLISHED, PostStatus.DRAFT));
-        Assertions.assertEquals(List.of(postService.getById(1), postService.getById(2), postService.getById(3),
+        assertEquals(List.of(postService.getById(1), postService.getById(2), postService.getById(3),
             postService.getById(4)), posts);
     }
 
     @Test
     void listPostBySlugIdAndStatusTest() {
         List<Post> posts = postCategoryService.listPostBy("category-1", PostStatus.PUBLISHED);
-        Assertions.assertEquals(List.of(postService.getById(2), postService.getById(3)), posts);
+        assertEquals(List.of(postService.getById(2), postService.getById(3)), posts);
     }
 
     @Test
     void listPostBySlugIdAndStatusesTest() {
         List<Post> posts = postCategoryService.listPostBy("category-1",
             Set.of(PostStatus.PUBLISHED, PostStatus.DRAFT));
-        Assertions.assertEquals(List.of(postService.getById(1), postService.getById(2), postService.getById(3),
+        assertEquals(List.of(postService.getById(1), postService.getById(2), postService.getById(3),
             postService.getById(4)), posts);
     }
 }

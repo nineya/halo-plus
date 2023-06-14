@@ -82,8 +82,8 @@ public class PostCommentController {
     @GetMapping("{postId:\\d+}/tree_view")
     @ApiOperation("Lists post comments with tree view")
     public Page<BaseCommentVO> listCommentTree(@PathVariable("postId") Integer postId,
-                                               @RequestParam(name = "page", required = false, defaultValue = "0") int page,
-                                               @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
+        @RequestParam(name = "page", required = false, defaultValue = "0") int page,
+        @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
         return postCommentService
             .pageVosAllBy(postId, PageRequest.of(page, optionService.getCommentPageSize(), sort));
     }
@@ -91,8 +91,8 @@ public class PostCommentController {
     @GetMapping("{postId:\\d+}/list_view")
     @ApiOperation("Lists post comment with list view")
     public Page<BaseCommentWithParentVO> listComments(@PathVariable("postId") Integer postId,
-                                                      @RequestParam(name = "page", required = false, defaultValue = "0") int page,
-                                                      @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
+        @RequestParam(name = "page", required = false, defaultValue = "0") int page,
+        @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
         return postCommentService.pageWithParentVoBy(postId,
             PageRequest.of(page, optionService.getCommentPageSize(), sort));
     }

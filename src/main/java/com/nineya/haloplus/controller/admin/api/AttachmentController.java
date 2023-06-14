@@ -73,7 +73,8 @@ public class AttachmentController {
 
     @PutMapping("/batch")
     @ApiOperation("Updates attachment in batch")
-    public List<AttachmentDTO> updateBatchBy(@RequestBody List<@Valid AttachmentParam> attachmentParams) {
+    public List<AttachmentDTO> updateBatchBy(
+        @RequestBody List<@Valid AttachmentParam> attachmentParams) {
         List<Attachment> attachmentsToUpdate = attachmentParams.stream()
             .filter(attachmentParam -> Objects.nonNull(attachmentParam.getId()))
             .map(attachmentParam -> {

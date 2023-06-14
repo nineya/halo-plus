@@ -61,8 +61,8 @@ public interface JournalCommentRepository extends BaseCommentRepository<JournalC
      * @return a list of CommentChildrenCountProjection
      */
     @Query(
-        "select new com.nineya.haloplus.model.projection.CommentChildrenCountProjection(count(comment"
-            + ".id), comment.parentId) "
+        "select new com.nineya.haloplus.model.projection.CommentChildrenCountProjection(count"
+            + "(comment.id), comment.parentId) "
             + "from JournalComment comment "
             + "where comment.parentId in ?1 "
             + "group by comment.parentId")

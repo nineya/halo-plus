@@ -4,6 +4,12 @@ server:
   compression:
     enabled: false
 spring:
+  datasource:
+    # MySQL database configuration.
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://vm.nineya.com:3306/halo-test?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: test
+    password: 123456
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
 

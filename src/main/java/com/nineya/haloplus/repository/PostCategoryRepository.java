@@ -60,7 +60,7 @@ public interface PostCategoryRepository extends BaseRepository<PostCategory, Int
      * Finds all post ids by category id and post status.
      *
      * @param categoryId category id must not be null
-     * @param status     post status must not be empty
+     * @param status post status must not be empty
      * @return a set of post id
      */
     @NonNull
@@ -130,7 +130,8 @@ public interface PostCategoryRepository extends BaseRepository<PostCategory, Int
      * @return a list of category id and post status
      */
     @NonNull
-    @Query("select new com.nineya.haloplus.model.projection.CategoryIdPostStatusProjection(pc.categoryId,"
-        + " pc.postId, p.status) from PostCategory pc inner join Post p on p.id=pc.postId")
+    @Query("select new com.nineya.haloplus.model.projection.CategoryIdPostStatusProjection(pc"
+        + ".categoryId, pc.postId, p.status) from PostCategory pc inner join Post p on p.id=pc"
+        + ".postId")
     List<CategoryIdPostStatusProjection> findAllWithPostStatus();
 }

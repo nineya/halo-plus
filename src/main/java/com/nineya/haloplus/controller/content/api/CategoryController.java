@@ -77,9 +77,9 @@ public class CategoryController {
     @GetMapping("{slug}/posts")
     @ApiOperation("Lists posts by category slug")
     public Page<PostListVO> listPostsBy(@PathVariable("slug") String slug,
-                                        @RequestParam(value = "password", required = false) String password,
-                                        @PageableDefault(sort = {"topPriority", "updateTime"}, direction = DESC)
-            Pageable pageable) {
+        @RequestParam(value = "password", required = false) String password,
+        @PageableDefault(sort = {"topPriority", "updateTime"}, direction = DESC)
+        Pageable pageable) {
         // Get category by slug
         Category category = categoryService.getBySlugOfNonNull(slug);
 

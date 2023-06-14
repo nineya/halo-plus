@@ -61,25 +61,31 @@ public class BackupController {
     @GetMapping("work-dir/fetch")
     public BackupDTO getWorkDirBackup(@RequestParam("filename") String filename) {
         return backupService
-            .getBackup(Paths.get(haloProperties.getBackupDir(), filename), BackupService.BackupType.WHOLE_SITE)
+            .getBackup(Paths.get(haloProperties.getBackupDir(), filename),
+                BackupService.BackupType.WHOLE_SITE)
             .orElseThrow(() ->
-                new NotFoundException("备份文件 " + filename + " 不存在或已删除！").setErrorData(filename));
+                new NotFoundException("备份文件 " + filename + " 不存在或已删除！").setErrorData(
+                    filename));
     }
 
     @GetMapping("data/fetch")
     public BackupDTO getDataBackup(@RequestParam("filename") String filename) {
         return backupService
-            .getBackup(Paths.get(haloProperties.getDataExportDir(), filename), BackupService.BackupType.JSON_DATA)
+            .getBackup(Paths.get(haloProperties.getDataExportDir(), filename),
+                BackupService.BackupType.JSON_DATA)
             .orElseThrow(() ->
-                new NotFoundException("备份文件 " + filename + " 不存在或已删除！").setErrorData(filename));
+                new NotFoundException("备份文件 " + filename + " 不存在或已删除！").setErrorData(
+                    filename));
     }
 
     @GetMapping("markdown/fetch")
     public BackupDTO getMarkdownBackup(@RequestParam("filename") String filename) {
         return backupService
-            .getBackup(Paths.get(haloProperties.getBackupMarkdownDir(), filename), BackupService.BackupType.MARKDOWN)
+            .getBackup(Paths.get(haloProperties.getBackupMarkdownDir(), filename),
+                BackupService.BackupType.MARKDOWN)
             .orElseThrow(() ->
-                new NotFoundException("备份文件 " + filename + " 不存在或已删除！").setErrorData(filename));
+                new NotFoundException("备份文件 " + filename + " 不存在或已删除！").setErrorData(
+                    filename));
     }
 
     @PostMapping("work-dir")
@@ -153,7 +159,7 @@ public class BackupController {
         String extension = FilenameUtils.getExtension(filename).toLowerCase();
         if (!supportType.contains(extension)) {
             throw new BadRequestException(
-                "不支持" + (StringUtils.isNotEmpty(extension) ? extension : "未知") 
+                "不支持" + (StringUtils.isNotEmpty(extension) ? extension : "未知")
                     + "格式的文件上传").setErrorData(filename);
         }
         return backupService.importMarkdown(file);
