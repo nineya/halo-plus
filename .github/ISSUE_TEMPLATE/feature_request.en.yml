@@ -4,7 +4,7 @@ body:
   - type: markdown
     id: preface
     attributes:
-      value: "Hello there! Thank you for submitting new features for Halo. Please spend a little bit to fill in the following instructions in detail."
+      value: "Hello there! Thank you for submitting new features for Halo-Plus. Please spend a little bit to fill in the following instructions in detail."
   - type: markdown
     id: environment
     attributes:
@@ -12,7 +12,7 @@ body:
   - type: input
     id: version
     attributes:
-      label: "Your current Halo version"
+      label: "Your current Halo-Plus version"
       description: "Can be found in backstage management system."
   - type: markdown
     id: details

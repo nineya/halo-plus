@@ -1,5 +1,5 @@
-blank_issues_enabled: false
+blank_issues_enabled: true
 contact_links:
-  - name: 对 Halo 有其他问题
-    url: https://bbs.halo.run
-    about: 如果你对 Halo 有其他想要提问的，我们欢迎到我们的官方社区进行提问。
+  - name: 关注微信公众号
+    url: https://blog.nineya.com/upload/2023/05/未标题-2.png
+    about: 如果问题描述起来较于复杂，欢迎关注微信公众号进行反馈。

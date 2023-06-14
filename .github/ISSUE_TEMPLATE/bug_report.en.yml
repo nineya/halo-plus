@@ -12,11 +12,11 @@ body:
       label: Checklist
       description: To avoid duplicate issues, it is recommended to do the following first.
       options:
-        - label: The issue has been searched in [GitHub Issues](https://github.com/halo-dev/halo/issues)
+        - label: The issue has been searched in [GitHub Issues](https://github.com/nineya/halo-plus/issues)
           required: true
         - label: The issue has been searched in the [bbs.halo.run](https://bbs.halo.run/)
           required: true
-        - label: Already consulted [document](https://docs.halo.run/)
+        - label: Already consulted [document](https://docs.halo-plus.nineya.com/)
           required: true
   - type: markdown
     id: environment
@@ -27,7 +27,7 @@ body:
     validations:
       required: true
     attributes:
-      label: What is version of Halo has the issue?
+      label: What is version of Halo-Plus has the issue?
       description: "Can be found in backstage management system."
   - type: dropdown
     id: database
@@ -55,7 +55,7 @@ body:
     attributes:
       label: "Your site address."
       description: "Note your online address, if possible."
-      placeholder: "ex. https://halo.run"
+      placeholder: "ex. https://blog.nineya.com"
     validations:
       required: false
   - type: markdown
@@ -73,7 +73,7 @@ body:
     id: logs
     attributes:
       label: "Relevant log output"
-      description: "Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks. The way to get the logs can be found at https://docs.halo.run/user-guide/faq#如何查看运行日志"
+      description: "Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks. The way to get the logs can be found at https://docs.halo-plus.nineya.com/user-guide/faq#如何查看运行日志"
       render: shell
   - type: textarea
     id: additional-information

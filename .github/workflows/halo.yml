@@ -53,10 +53,10 @@ jobs:
           version=${version#v}
           sed -i "s/version=.*-SNAPSHOT$/version=$version/1" gradle.properties
           ./gradlew clean build -x test
-      - name: Archive halo jar
+      - name: Archive halo-plus jar
         uses: actions/upload-artifact@v2
         with:
-          name: halo-jar
+          name: halo-plus-jar
           path: |
             build/libs
             !build/libs/*-plain.jar
@@ -69,7 +69,7 @@ jobs:
       - name: Download halo jar
         uses: actions/download-artifact@v2
         with:
-          name: halo-jar
+          name: halo-plus-jar
           path: build/libs
       - name: Get Name of Artifact
         id: get_artifact
