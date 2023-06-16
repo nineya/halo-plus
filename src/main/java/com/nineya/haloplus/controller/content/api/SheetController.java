@@ -82,10 +82,10 @@ public class SheetController {
     @GetMapping("{sheetId:\\d+}")
     @ApiOperation("Gets a sheet")
     public SheetDetailVO getBy(@PathVariable("sheetId") Integer sheetId,
-                               @RequestParam(value = "formatDisabled", required = false, defaultValue = "true")
-            Boolean formatDisabled,
-                               @RequestParam(value = "sourceDisabled", required = false, defaultValue = "false")
-            Boolean sourceDisabled) {
+        @RequestParam(value = "formatDisabled", required = false, defaultValue = "true")
+        Boolean formatDisabled,
+        @RequestParam(value = "sourceDisabled", required = false, defaultValue = "false")
+        Boolean sourceDisabled) {
         Sheet sheet = sheetService.getById(sheetId);
 
         SheetDetailVO sheetDetailVO = sheetRenderAssembler.convertToDetailVo(sheet);
@@ -109,9 +109,9 @@ public class SheetController {
     @ApiOperation("Gets a sheet by slug")
     public SheetDetailVO getBy(@RequestParam("slug") String slug,
         @RequestParam(value = "formatDisabled", required = false, defaultValue = "true")
-            Boolean formatDisabled,
+        Boolean formatDisabled,
         @RequestParam(value = "sourceDisabled", required = false, defaultValue = "false")
-            Boolean sourceDisabled) {
+        Boolean sourceDisabled) {
         Sheet sheet = sheetService.getBySlug(slug);
         SheetDetailVO sheetDetailVO = sheetRenderAssembler.convertToDetailVo(sheet);
 
@@ -132,8 +132,8 @@ public class SheetController {
 
     @GetMapping("{sheetId:\\d+}/comments/top_view")
     public Page<CommentWithHasChildrenVO> listTopComments(@PathVariable("sheetId") Integer sheetId,
-                                                          @RequestParam(name = "page", required = false, defaultValue = "0") int page,
-                                                          @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
+        @RequestParam(name = "page", required = false, defaultValue = "0") int page,
+        @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
         Page<CommentWithHasChildrenVO> comments =
             sheetCommentService.pageTopCommentsBy(sheetId, CommentStatus.PUBLISHED,
                 PageRequest.of(page, optionService.getCommentPageSize(), sort));
@@ -143,8 +143,8 @@ public class SheetController {
 
     @GetMapping("{sheetId:\\d+}/comments/{commentParentId:\\d+}/children")
     public List<BaseCommentDTO> listChildrenBy(@PathVariable("sheetId") Integer sheetId,
-                                               @PathVariable("commentParentId") Long commentParentId,
-                                               @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
+        @PathVariable("commentParentId") Long commentParentId,
+        @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
         // Find all children comments
         List<SheetComment> sheetComments = sheetCommentService
             .listChildrenBy(sheetId, commentParentId, CommentStatus.PUBLISHED, sort);
@@ -156,8 +156,8 @@ public class SheetController {
     @GetMapping("{sheetId:\\d+}/comments/tree_view")
     @ApiOperation("Lists comments with tree view")
     public Page<BaseCommentVO> listCommentsTree(@PathVariable("sheetId") Integer sheetId,
-                                                @RequestParam(name = "page", required = false, defaultValue = "0") int page,
-                                                @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
+        @RequestParam(name = "page", required = false, defaultValue = "0") int page,
+        @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
         Page<BaseCommentVO> comments = sheetCommentService
             .pageVosBy(sheetId, PageRequest.of(page, optionService.getCommentPageSize(), sort));
         comments.getContent().forEach(sheetCommentRenderAssembler::clearSensitiveField);
@@ -167,8 +167,8 @@ public class SheetController {
     @GetMapping("{sheetId:\\d+}/comments/list_view")
     @ApiOperation("Lists comment with list view")
     public Page<BaseCommentWithParentVO> listComments(@PathVariable("sheetId") Integer sheetId,
-                                                      @RequestParam(name = "page", required = false, defaultValue = "0") int page,
-                                                      @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
+        @RequestParam(name = "page", required = false, defaultValue = "0") int page,
+        @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
         Page<BaseCommentWithParentVO> comments =
             sheetCommentService.pageWithParentVoBy(sheetId,
                 PageRequest.of(page, optionService.getCommentPageSize(), sort));

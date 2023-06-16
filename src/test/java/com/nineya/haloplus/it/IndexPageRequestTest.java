@@ -20,19 +20,14 @@ class IndexPageRequestTest extends BaseApiTest {
     @Test
     void indexPage() throws IOException {
         installBlog();
-        // validate atom.xml link
+        // validate site link
         Document document = Jsoup.connect(blogUrl).get();
-        Element atomLink = document.head().getElementsByAttributeValue("title", "atom 1.0").get(0);
-        assertEquals(blogUrl + "/atom.xml", atomLink.attr("href"));
-
-        // validate title link
-        Element titleLink = document.body().selectFirst(".logo-title > .title > h3 > a");
-        assertEquals(blogUrl, titleLink.attr("href"));
-        assertEquals("Test's Blog", titleLink.text());
+        Element siteLink = document.head().getElementsByAttributeValue("name", "site").get(0);
+        assertEquals(blogUrl, siteLink.attr("content"));
 
         // validate post link
         Element postTitleLink =
-            document.body().selectFirst(".content > .post > .post-title > h3 > a");
+            document.body().selectFirst(".container .card-content > .title > a");
         assertEquals("/archives/hello-halo", postTitleLink.attr("href"));
         assertEquals("Hello Halo", postTitleLink.text());
     }

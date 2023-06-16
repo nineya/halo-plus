@@ -56,13 +56,15 @@ public class PostParamTest {
         Set<ConstraintViolation<PostParam>> validate = validator.validate(postParam);
         assertThat(validate).isNotNull();
         assertThat(validate).hasSize(1);
-        assertThat(validate.iterator().next().getMessage()).isEqualTo("密码开头和结尾不能包含空字符串");
+        assertThat(validate.iterator().next().getMessage()).isEqualTo(
+            "密码开头和结尾不能包含空字符串");
 
         postParam.setPassword("123 ");
         validate = validator.validate(postParam);
         assertThat(validate).isNotNull();
         assertThat(validate).hasSize(1);
-        assertThat(validate.iterator().next().getMessage()).isEqualTo("密码开头和结尾不能包含空字符串");
+        assertThat(validate.iterator().next().getMessage()).isEqualTo(
+            "密码开头和结尾不能包含空字符串");
 
         postParam.setPassword("");
         validate = validator.validate(postParam);
@@ -100,7 +102,8 @@ public class PostParamTest {
 
         Post post = postParam.convertTo();
         assertThat(post).isNotNull();
-        Assertions.assertThat(post.getContent().getContent()).isEqualTo("<p>两个黄鹂鸣翠柳，一行白鹭上青天。</p>\n");
+        Assertions.assertThat(post.getContent().getContent())
+            .isEqualTo("<p>两个黄鹂鸣翠柳，一行白鹭上青天。</p>\n");
     }
 
     @Test
@@ -123,12 +126,14 @@ public class PostParamTest {
         postParam.setEditorType(PostEditorType.RICHTEXT);
         Post post2 = postParam.convertTo();
         assertThat(post2).isNotNull();
-        Assertions.assertThat(post2.getContent().getContent()).isEqualTo(postParam.getOriginalContent());
+        Assertions.assertThat(post2.getContent().getContent())
+            .isEqualTo(postParam.getOriginalContent());
 
         // Edit type not equals to markdown but want to let server rendering
         postParam.setKeepRaw(false);
         Post post3 = postParam.convertTo();
         assertThat(post3).isNotNull();
-        Assertions.assertThat(post3.getContent().getContent()).isEqualTo(postParam.getOriginalContent());
+        Assertions.assertThat(post3.getContent().getContent())
+            .isEqualTo(postParam.getOriginalContent());
     }
 }

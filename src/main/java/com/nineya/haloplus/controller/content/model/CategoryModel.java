@@ -78,8 +78,8 @@ public class CategoryModel {
      * List category posts.
      *
      * @param model model
-     * @param slug  slug
-     * @param page  current page
+     * @param slug slug
+     * @param page current page
      * @return template name
      */
     public String listPost(Model model, String slug, Integer page) {
@@ -90,7 +90,8 @@ public class CategoryModel {
         if (!categoryAuthentication.isAuthenticated(category.getId())) {
             model.addAttribute("slug", category.getSlug());
             model.addAttribute("type", EncryptTypeEnum.CATEGORY.getName());
-            if (themeService.templateExists(HaloConst.POST_PASSWORD_TEMPLATE + HaloConst.SUFFIX_FTL)) {
+            if (themeService.templateExists(
+                HaloConst.POST_PASSWORD_TEMPLATE + HaloConst.SUFFIX_FTL)) {
                 return themeService.render(HaloConst.POST_PASSWORD_TEMPLATE);
             }
             return "common/template/" + HaloConst.POST_PASSWORD_TEMPLATE;

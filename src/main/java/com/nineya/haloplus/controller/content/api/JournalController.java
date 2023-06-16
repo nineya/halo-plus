@@ -49,7 +49,7 @@ public class JournalController {
 
     private final JournalService journalService;
 
-    private  final JournalCommentRenderAssembler journalCommentRenderAssembler;
+    private final JournalCommentRenderAssembler journalCommentRenderAssembler;
 
     private final JournalCommentService journalCommentService;
 
@@ -94,8 +94,8 @@ public class JournalController {
 
     @GetMapping("{journalId:\\d+}/comments/{commentParentId:\\d+}/children")
     public List<BaseCommentDTO> listChildrenBy(@PathVariable("journalId") Integer journalId,
-                                               @PathVariable("commentParentId") Long commentParentId,
-                                               @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
+        @PathVariable("commentParentId") Long commentParentId,
+        @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
         // Find all children comments
         List<JournalComment> postComments = journalCommentService
             .listChildrenBy(journalId, commentParentId, CommentStatus.PUBLISHED, sort);
@@ -106,8 +106,8 @@ public class JournalController {
     @GetMapping("{journalId:\\d+}/comments/tree_view")
     @ApiOperation("Lists comments with tree view")
     public Page<BaseCommentVO> listCommentsTree(@PathVariable("journalId") Integer journalId,
-                                                @RequestParam(name = "page", required = false, defaultValue = "0") int page,
-                                                @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
+        @RequestParam(name = "page", required = false, defaultValue = "0") int page,
+        @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
         Page<BaseCommentVO> comments = journalCommentService
             .pageVosBy(journalId, PageRequest.of(page, optionService.getCommentPageSize(), sort));
         comments.getContent().forEach(journalCommentRenderAssembler::clearSensitiveField);
@@ -117,8 +117,8 @@ public class JournalController {
     @GetMapping("{journalId:\\d+}/comments/list_view")
     @ApiOperation("Lists comment with list view")
     public Page<BaseCommentWithParentVO> listComments(@PathVariable("journalId") Integer journalId,
-                                                      @RequestParam(name = "page", required = false, defaultValue = "0") int page,
-                                                      @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
+        @RequestParam(name = "page", required = false, defaultValue = "0") int page,
+        @SortDefault(sort = "createTime", direction = DESC) Sort sort) {
         Page<BaseCommentWithParentVO> comments =
             journalCommentService.pageWithParentVoBy(journalId,
                 PageRequest.of(page, optionService.getCommentPageSize(), sort));

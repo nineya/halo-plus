@@ -76,7 +76,8 @@ public class ThemeRepositoryImpl
                     // fetch current theme
                     this.currentTheme =
                         this.fetchThemePropertyByThemeId(currentThemeId).orElseGet(() -> {
-                            if (!StringUtils.equalsIgnoreCase(currentThemeId, HaloConst.DEFAULT_THEME_ID)) {
+                            if (!StringUtils.equalsIgnoreCase(currentThemeId,
+                                HaloConst.DEFAULT_THEME_ID)) {
                                 fallbackTheme.set(true);
                                 return this.getThemeByThemeId(HaloConst.DEFAULT_THEME_ID);
                             }

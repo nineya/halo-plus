@@ -1,5 +1,8 @@
 package com.nineya.haloplus.utils;
 
+import static com.nineya.haloplus.utils.Version.PreRelease.ALPHA;
+import static com.nineya.haloplus.utils.Version.PreRelease.BETA;
+import static com.nineya.haloplus.utils.Version.PreRelease.RC;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -122,19 +125,19 @@ class VersionTest {
         String version = major + "." + minor + "." + patch + "-alpha." + preReleaseMajor;
         Optional<Version> versionOpt = Version.resolve(version);
         assertTrue(versionOpt.isPresent());
-        assertEquals(new Version(major, minor, patch, Version.PreRelease.ALPHA, preReleaseMajor),
+        assertEquals(new Version(major, minor, patch, ALPHA, preReleaseMajor),
             versionOpt.get());
 
         version = major + "." + minor + "." + patch + "-beta." + preReleaseMajor;
         versionOpt = Version.resolve(version);
         assertTrue(versionOpt.isPresent());
-        assertEquals(new Version(major, minor, patch, Version.PreRelease.BETA, preReleaseMajor),
+        assertEquals(new Version(major, minor, patch, BETA, preReleaseMajor),
             versionOpt.get());
 
         version = major + "." + minor + "." + patch + "-rc." + preReleaseMajor;
         versionOpt = Version.resolve(version);
         assertTrue(versionOpt.isPresent());
-        assertEquals(new Version(major, minor, patch, Version.PreRelease.RC, preReleaseMajor),
+        assertEquals(new Version(major, minor, patch, RC, preReleaseMajor),
             versionOpt.get());
     }
 
@@ -198,19 +201,19 @@ class VersionTest {
     @Test
     void isPreRelease() {
         assertFalse(new Version(0, 0, 0, null, 0L).isPreRelease());
-        assertTrue(new Version(0, 0, 0, Version.PreRelease.ALPHA, 0L).isPreRelease());
+        assertTrue(new Version(0, 0, 0, ALPHA, 0L).isPreRelease());
     }
 
     @Test
     void preReleaseTagCompare() {
-        assertTrue(Version.PreRelease.ALPHA.compare(Version.PreRelease.ALPHA, Version.PreRelease.BETA) < 0);
-        assertTrue(Version.PreRelease.ALPHA.compare(Version.PreRelease.ALPHA, Version.PreRelease.RC) < 0);
-        assertTrue(Version.PreRelease.ALPHA.compare(Version.PreRelease.BETA, Version.PreRelease.ALPHA) > 0);
-        assertTrue(Version.PreRelease.ALPHA.compare(Version.PreRelease.BETA, Version.PreRelease.RC) < 0);
-        assertTrue(Version.PreRelease.ALPHA.compare(Version.PreRelease.RC, Version.PreRelease.ALPHA) > 0);
-        assertTrue(Version.PreRelease.ALPHA.compare(Version.PreRelease.RC, Version.PreRelease.BETA) > 0);
-        Assertions.assertEquals(0, Version.PreRelease.ALPHA.compare(Version.PreRelease.ALPHA, Version.PreRelease.ALPHA));
-        Assertions.assertEquals(0, Version.PreRelease.ALPHA.compare(Version.PreRelease.BETA, Version.PreRelease.BETA));
-        Assertions.assertEquals(0, Version.PreRelease.ALPHA.compare(Version.PreRelease.RC, Version.PreRelease.RC));
+        assertTrue(ALPHA.compare(ALPHA, BETA) < 0);
+        assertTrue(ALPHA.compare(ALPHA, RC) < 0);
+        assertTrue(ALPHA.compare(BETA, ALPHA) > 0);
+        assertTrue(ALPHA.compare(BETA, RC) < 0);
+        assertTrue(ALPHA.compare(RC, ALPHA) > 0);
+        assertTrue(ALPHA.compare(RC, BETA) > 0);
+        Assertions.assertEquals(0, ALPHA.compare(ALPHA, ALPHA));
+        Assertions.assertEquals(0, ALPHA.compare(BETA, BETA));
+        Assertions.assertEquals(0, ALPHA.compare(RC, RC));
     }
 }
