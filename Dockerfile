@@ -7,7 +7,7 @@ RUN java -Djarmode=layertools -jar application.jar extract
 ################################
 
 FROM eclipse-temurin:11-jre
-MAINTAINER johnniang <johnniang@fastmail.com>
+MAINTAINER nineya <lsw@nineya.com>
 WORKDIR application
 COPY --from=builder application/dependencies/ ./
 COPY --from=builder application/spring-boot-loader/ ./
