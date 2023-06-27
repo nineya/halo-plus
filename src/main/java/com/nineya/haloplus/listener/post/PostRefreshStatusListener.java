@@ -39,10 +39,10 @@ public class PostRefreshStatusListener {
     /**
      * If the current category is encrypted, refresh all post referencing the category to
      * INTIMATE status.
-     *
+     * TODO 被加密的文章不默认隐藏
      * @param event category updated event
      */
-    @EventListener(CategoryUpdatedEvent.class)
+    // @EventListener(CategoryUpdatedEvent.class)
     public void categoryUpdatedListener(CategoryUpdatedEvent event) {
         Category category = event.getCategory();
         Category beforeUpdated = event.getBeforeUpdated();
@@ -136,10 +136,11 @@ public class PostRefreshStatusListener {
 
     /**
      * If the post belongs to any encryption category, set the status to INTIMATE.
+     * TODO 被加密的文章不默认隐藏
      *
      * @param event post updated event
      */
-    @EventListener(PostUpdatedEvent.class)
+    // @EventListener(PostUpdatedEvent.class)
     public void postUpdatedListener(PostUpdatedEvent event) {
         Post post = event.getPost();
         if (!postService.existsById(post.getId())) {
