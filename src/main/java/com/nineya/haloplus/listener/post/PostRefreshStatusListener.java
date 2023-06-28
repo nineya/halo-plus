@@ -40,6 +40,7 @@ public class PostRefreshStatusListener {
      * If the current category is encrypted, refresh all post referencing the category to
      * INTIMATE status.
      * TODO 被加密的文章不默认隐藏
+     *
      * @param event category updated event
      */
     // @EventListener(CategoryUpdatedEvent.class)
