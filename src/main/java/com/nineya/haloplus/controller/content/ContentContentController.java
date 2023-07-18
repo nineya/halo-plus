@@ -271,7 +271,7 @@ public class ContentContentController {
         HttpServletRequest request) {
         ContentAuthenticationRequest authRequest = new ContentAuthenticationRequest();
         authRequest.setPassword(password);
-        Post post = postService.getBy(PostStatus.INTIMATE, slug);
+        Post post = postService.getBySlug(slug);
         post.setSlug(URLEncoder.encode(post.getSlug(), StandardCharsets.UTF_8));
 
         authRequest.setId(post.getId());

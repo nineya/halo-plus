@@ -107,9 +107,7 @@ public class PostModel {
         } else if (PostStatus.DRAFT.equals(post.getStatus())) {
             // Drafts are not allowed bo be accessed by outsiders.
             throw new NotFoundException("查询不到该文章的信息");
-        } else if (PostStatus.INTIMATE.equals(post.getStatus())
-            && !postAuthentication.isAuthenticated(post.getId())
-        ) {
+        } else if (!postAuthentication.isAuthenticated(post.getId())) {
             // Encrypted articles must has the correct password before they can be accessed.
 
             model.addAttribute("slug", post.getSlug());
