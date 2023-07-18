@@ -48,6 +48,7 @@ public class PhotoModel {
 
         model.addAttribute("is_photos", true);
         model.addAttribute("photos", photos);
+        model.addAttribute("photos_title", optionService.getPhotosTitle());
         model.addAttribute("meta_keywords", optionService.getSeoKeywords());
         model.addAttribute("meta_description", optionService.getSeoDescription());
         return themeService.render("photos");

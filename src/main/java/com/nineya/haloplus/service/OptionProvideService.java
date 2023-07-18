@@ -1,5 +1,6 @@
 package com.nineya.haloplus.service;
 
+import com.nineya.haloplus.model.properties.SheetProperties;
 import com.qiniu.common.Zone;
 import com.qiniu.storage.Region;
 import java.util.Collection;
@@ -403,6 +404,36 @@ public interface OptionProvideService {
     @NonNull
     default String getBlogTitle() {
         return getByProperty(BlogProperties.BLOG_TITLE).orElse("").toString();
+    }
+
+    /**
+     * Gets photos title.
+     *
+     * @return photos title.
+     */
+    @NonNull
+    default String getPhotosTitle() {
+        return getByProperty(SheetProperties.PHOTOS_TITLE).orElse("").toString();
+    }
+
+    /**
+     * Gets journals title.
+     *
+     * @return journals title.
+     */
+    @NonNull
+    default String getJournalsTitle() {
+        return getByProperty(SheetProperties.JOURNALS_TITLE).orElse("").toString();
+    }
+
+    /**
+     * Gets links title.
+     *
+     * @return links title.
+     */
+    @NonNull
+    default String getLinksTitle() {
+        return getByProperty(SheetProperties.LINKS_TITLE).orElse("").toString();
     }
 
     /**

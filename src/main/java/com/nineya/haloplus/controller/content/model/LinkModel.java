@@ -24,6 +24,7 @@ public class LinkModel {
 
     public String list(Model model) {
         model.addAttribute("is_links", true);
+        model.addAttribute("links_title", optionService.getLinksTitle());
         model.addAttribute("meta_keywords", optionService.getSeoKeywords());
         model.addAttribute("meta_description", optionService.getSeoDescription());
         return themeService.render("links");
