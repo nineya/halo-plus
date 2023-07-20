@@ -194,9 +194,9 @@ public class SwaggerConfiguration {
             .version(HALO_VERSION)
             .termsOfServiceUrl("https://github.com/halo-dev")
             .contact(
-                new Contact("halo-dev", "https://github.com/halo-dev/halo/issues", "hi@halo.run"))
+                new Contact("nineya", "https://github.com/nineya/halo-plus/issues", "blog@nineya.com"))
             .license("GNU General Public License v3.0")
-            .licenseUrl("https://github.com/halo-dev/halo/blob/master/LICENSE")
+            .licenseUrl("https://github.com/nineya/halo-plus/blob/master/LICENSE")
             .build();
     }
 
