@@ -49,7 +49,12 @@ public enum InputType {
     /**
      * Switch input type, only true or false
      */
-    SWITCH;
+    SWITCH,
+
+    /**
+     * Repeater list type, Support children
+     */
+    REPEATER;
 
     /**
      * Convert type to input type.

@@ -56,6 +56,11 @@ public class Item {
      */
     private List<Option> options;
 
+    /**
+     * Item's children, default is empty list
+     */
+    private List<Item> children;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
