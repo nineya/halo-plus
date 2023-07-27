@@ -192,7 +192,7 @@ public class SwaggerConfiguration {
             .title("Halo-Plus API Documentation")
             .description("Documentation for Halo-Plus API")
             .version(HALO_VERSION)
-            .termsOfServiceUrl("https://github.com/halo-dev")
+            .termsOfServiceUrl("https://github.com/nineya")
             .contact(
                 new Contact("nineya", "https://github.com/nineya/halo-plus/issues", "blog@nineya.com"))
             .license("GNU General Public License v3.0")
