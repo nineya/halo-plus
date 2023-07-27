@@ -27,6 +27,11 @@ public enum InputType {
     CODE,
 
     /**
+     * checkbox
+     */
+    CHECKBOX,
+
+    /**
      * Radio box input type
      */
     RADIO,
