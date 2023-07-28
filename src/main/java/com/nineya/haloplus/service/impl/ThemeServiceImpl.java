@@ -407,7 +407,9 @@ public class ThemeServiceImpl implements ThemeService {
         final var themeUpdater =
             new MultipartFileThemeUpdater(file, fetcherComposite, themeRepository);
         try {
-            return themeUpdater.update(themeId);
+            ThemeProperty themeProperty = themeUpdater.update(themeId);
+            eventPublisher.publishEvent(new ThemeUpdatedEvent(this));
+            return themeProperty;
         } catch (IOException e) {
             throw new ServiceException("更新主题失败：" + e.getMessage(), e);
         }
