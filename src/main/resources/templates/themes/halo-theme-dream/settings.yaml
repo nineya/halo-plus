@@ -46,7 +46,7 @@ basic_info:
     page_number:
       name: page_number
       label: 分页页码数量
-      type: text
+      type: number
       placeholder: '请输入数量数值'
       default: '5'
     record_number:
@@ -223,12 +223,6 @@ basic_style:
           label: 模块化（左侧）
         - value: 'module-right'
           label: 模块化（右侧）
-    module_links:
-      name: module_links
-      label: 模块化布局链接
-      type: textarea
-      placeholder: '标签|文字说明|是否新界面打开(true/false)|背景图链接|跳转链接地址'
-      description: '以 <b><u>标签|文字说明|是否新界面打开(true/false)|背景图链接|跳转链接地址</u></b> 格式填写内容，一行表示一个模块链接，可填写 1~6 个链接。'
     left_sidebar_sticky:
       name: left_sidebar_sticky
       label: 左侧边栏悬浮
@@ -253,6 +247,37 @@ basic_style:
           label: 固定底部
         - value: none
           label: 不悬浮
+    module_options:
+      name: module_options
+      label: 模块化布局链接
+      type: repeater
+      description: '可填写 1~6 个链接。'
+      children:
+        - name: tag
+          label: 标签
+          type: text
+          placeholder: '请输入标签内容'
+        - name: title
+          label: 标题
+          type: text
+          placeholder: '请输入标题内容'
+        - name: url
+          label: 跳转地址
+          type: text
+          placeholder: '请输入跳转地址'
+        - name: image
+          label: 背景图链接
+          type: attachment
+          placeholder: '请输入图片地址'
+        - name: target
+          label: 打开方式
+          type: radio
+          default: '_blank'
+          options:
+            - value: '_blank'
+              label:  新窗口
+            - value: '_self'
+              label:  原窗口
 post:
   label: 文章设置
   items:
@@ -445,19 +470,30 @@ post:
     code_fold_line:
       name: code_fold_line
       label: 代码块折叠
-      type: text
+      type: number
       placeholder: '请输入代码行数数值'
       description: '代码行数超出指定行数后默认进行折叠，指定的行数需大于等于 20。'
     img_fold_height:
       name: img_fold_height
       label: 正文长图折叠
-      type: text
+      type: number
       placeholder: '请输入高度数值（px）'
       description: '图片高度超出指定高度（px）后默认进行折叠，指定的高度需大于等于 400px。'
+    show_img_name:
+      name: show_img_name
+      label: 显示图片名称
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
     invalid_tips_day:
       name: invalid_tips_day
       label: 文章失效提示
-      type: text
+      type: number
       default: 99999999
       placeholder: '请输入时间（天）'
       description: '文章超过指定天数未进行更新，展示文章或图片可能失效的温馨提示。'
@@ -645,7 +681,7 @@ comment:
     unfold_reply_num:
       name: unfold_reply_num
       label: 默认展开的二级回复数量
-      type: text
+      type: number
       default: 6
       placeholder: '请输入数量数值'
     show_comment_ua:
@@ -686,403 +722,90 @@ comment:
 sidebar_show:
   label: 侧边栏显示
   items:
-    sidebar_profile:
-      name: sidebar_profile
-      label: 侧边栏信息
-      type: radio
-      default: left
-      options:
-        - value: left
-          label: 左侧
-        - value: right
-          label: 右侧
-        - value: none
-          label: 关闭
-    sidebar_toc:
-      name: sidebar_toc
-      label: 侧边栏目录
-      type: radio
-      default: right
-      options:
-        - value: left
-          label: 左侧
-        - value: right
-          label: 右侧
-        - value: none
-          label: 关闭
-    sidebar_notice:
-      name: sidebar_notice
-      label: 侧边栏公告
-      type: radio
-      default: right
-      options:
-        - value: left
-          label: 左侧
-        - value: right
-          label: 右侧
-        - value: none
-          label: 关闭
-    sidebar_love:
-      name: sidebar_love
-      label: 侧边栏恋爱墙
-      type: radio
-      default: right
-      options:
-        - value: left
-          label: 左侧
-        - value: right
-          label: 右侧
-        - value: none
-          label: 关闭
-    sidebar_music:
-      name: sidebar_music
-      label: 侧边栏音乐
-      type: radio
-      default: none
-      description: "三列布局时不能在右侧显示音乐模块。<img style=\"display: none\" src=\"http://127.0.0.1\" onerror=\"let e=document.createElement('script');e.setAttribute('type', 'text/javascript');e.setAttribute('src', '/themes/dream/source/js/settings.min.js');document.getElementsByTagName('head')[0].appendChild(e);\" />"
-      options:
-        - value: left
-          label: 左侧
-        - value: right
-          label: 右侧
-        - value: none
-          label: 关闭
-    sidebar_ad_piece:
-      name: sidebar_ad_piece
-      label: 侧边栏广告
-      type: radio
-      default: none
-      options:
-        - value: left
-          label: 左侧
-        - value: right
-          label: 右侧
-        - value: none
-          label: 关闭
-    sidebar_recent_posts:
-      name: sidebar_recent_posts
-      label: 侧边栏最近文章
-      type: radio
-      default: right
-      options:
-        - value: left
-          label: 左侧
-        - value: right
-          label: 右侧
-        - value: none
-          label: 关闭
-    sidebar_recent_comments:
-      name: sidebar_recent_comments
-      label: 侧边栏最近评论
-      type: radio
-      default: right
-      options:
-        - value: left
-          label: 左侧
-        - value: right
-          label: 右侧
-        - value: none
-          label: 关闭
-    sidebar_categories:
-      name: sidebar_categories
-      label: 侧边栏分类
-      type: radio
-      default: left
-      options:
-        - value: left
-          label: 左侧
-        - value: right
-          label: 右侧
-        - value: none
-          label: 关闭
-    sidebar_tags:
-      name: sidebar_tags
-      label: 侧边栏标签
-      type: radio
-      default: left
-      options:
-        - value: left
-          label: 左侧
-        - value: right
-          label: 右侧
-        - value: none
-          label: 关闭
-    sidebar_tagcloud:
-      name: sidebar_tagcloud
-      label: 侧边栏标签云
-      type: radio
-      default: none
-      options:
-        - value: left
-          label: 左侧
-        - value: right
-          label: 右侧
-        - value: none
-          label: 关闭
-    sidebar_links:
-      name: sidebar_links
-      label: 侧边栏友链
-      type: radio
-      default: left
-      options:
-        - value: left
-          label: 左侧
-        - value: right
-          label: 右侧
-        - value: none
-          label: 关闭
-    sidebar_priority_profile:
-      name: sidebar_priority_profile
-      label: 侧边栏信息-优先级
-      type: text
-      default: 9900
-      placeholder: '请输入优先级数值'
-      description: '优先级越高，模块排序越靠前。'
-    sidebar_priority_toc:
-      name: sidebar_priority_toc
-      label: 侧边栏目录-优先级
-      type: text
-      default: 9800
-      placeholder: '请输入优先级数值'
-      description: '优先级越高，模块排序越靠前。'
-    sidebar_priority_notice:
-      name: sidebar_priority_notice
-      label: 侧边栏公告-优先级
-      type: text
-      default: 9700
-      placeholder: '请输入优先级数值'
-      description: '优先级越高，模块排序越靠前。'
-    sidebar_priority_love:
-      name: sidebar_priority_love
-      label: 侧边栏恋爱墙-优先级
-      type: text
-      default: 9600
-      placeholder: '请输入优先级数值'
-      description: '优先级越高，模块排序越靠前。'
-    sidebar_priority_music:
-      name: sidebar_priority_music
-      label: 侧边栏音乐-优先级
-      type: text
-      default: 9500
-      placeholder: '请输入优先级数值'
-      description: '优先级越高，模块排序越靠前。'
-    sidebar_priority_ad_piece:
-      name: sidebar_priority_ad_piece
-      label: 侧边栏广告-优先级
-      type: text
-      default: 9400
-      placeholder: '请输入优先级数值'
-      description: '优先级越高，模块排序越靠前。'
-    sidebar_priority_recent_posts:
-      name: sidebar_priority_recent_posts
-      label: 侧边栏最近文章-优先级
-      type: text
-      default: 9300
-      placeholder: '请输入优先级数值'
-      description: '优先级越高，模块排序越靠前。'
-    sidebar_priority_recent_comments:
-      name: sidebar_priority_recent_comments
-      label: 侧边栏最近评论-优先级
-      type: text
-      default: 9200
-      placeholder: '请输入优先级数值'
-      description: '优先级越高，模块排序越靠前。'
-    sidebar_priority_categories:
-      name: sidebar_priority_categories
-      label: 侧边栏分类-优先级
-      type: text
-      default: 9100
-      placeholder: '请输入优先级数值'
-      description: '优先级越高，模块排序越靠前。'
-    sidebar_priority_tags:
-      name: sidebar_priority_tags
-      label: 侧边栏标签-优先级
-      type: text
-      default: 9000
-      placeholder: '请输入优先级数值'
-      description: '优先级越高，模块排序越靠前。'
-    sidebar_priority_tagcloud:
-      name: sidebar_priority_tagcloud
-      label: 侧边栏标签云-优先级
-      type: text
-      default: 8900
-      placeholder: '请输入优先级数值'
-      description: '优先级越高，模块排序越靠前。'
-    sidebar_priority_links:
-      name: sidebar_priority_links
-      label: 侧边栏友链-优先级
-      type: text
-      default: 8800
-      placeholder: '请输入优先级数值'
-      description: '优先级越高，模块排序越靠前。'
-    hide_profile:
-      name: hide_profile
-      label: 侧边栏信息-隐藏方式
-      type: select
-      default: 'is-not-hidden'
-      options:
-        - value: 'is-hidden-mobile'
-          label: 移动设备隐藏
-        - value: 'is-hidden-not-desktop'
-          label: 移动、平板设备隐藏
-        - value: 'is-hidden-desktop'
-          label: 桌面设备隐藏
-        - value: 'is-not-hidden'
-          label: 不隐藏
-    hide_toc:
-      name: hide_toc
-      label: 侧边栏目录-隐藏方式
-      type: select
-      default: 'is-hidden-not-desktop'
-      options:
-        - value: 'is-hidden-mobile'
-          label: 移动设备隐藏
-        - value: 'is-hidden-not-desktop'
-          label: 移动、平板设备隐藏
-        - value: 'is-hidden-desktop'
-          label: 桌面设备隐藏
-        - value: 'is-not-hidden'
-          label: 不隐藏
-    hide_notice:
-      name: hide_notice
-      label: 侧边栏公告-隐藏方式
-      type: select
-      default: 'is-not-hidden'
-      options:
-        - value: 'is-hidden-mobile'
-          label: 移动设备隐藏
-        - value: 'is-hidden-not-desktop'
-          label: 移动、平板设备隐藏
-        - value: 'is-hidden-desktop'
-          label: 桌面设备隐藏
-        - value: 'is-not-hidden'
-          label: 不隐藏
-    hide_love:
-      name: hide_love
-      label: 侧边栏恋爱墙-隐藏方式
-      type: select
-      default: 'is-not-hidden'
-      options:
-        - value: 'is-hidden-mobile'
-          label: 移动设备隐藏
-        - value: 'is-hidden-not-desktop'
-          label: 移动、平板设备隐藏
-        - value: 'is-hidden-desktop'
-          label: 桌面设备隐藏
-        - value: 'is-not-hidden'
-          label: 不隐藏
-    hide_music:
-      name: hide_music
-      label: 侧边栏音乐-隐藏方式
-      type: select
-      default: 'is-hidden-mobile'
-      options:
-        - value: 'is-hidden-mobile'
-          label: 移动设备隐藏
-        - value: 'is-hidden-not-desktop'
-          label: 移动、平板设备隐藏
-        - value: 'is-hidden-desktop'
-          label: 桌面设备隐藏
-        - value: 'is-not-hidden'
-          label: 不隐藏
-    hide_ad_piece:
-      name: hide_ad_piece
-      label: 侧边栏广告-隐藏方式
-      type: select
-      default: 'is-not-hidden'
-      options:
-        - value: 'is-hidden-mobile'
-          label: 移动设备隐藏
-        - value: 'is-hidden-not-desktop'
-          label: 移动、平板设备隐藏
-        - value: 'is-hidden-desktop'
-          label: 桌面设备隐藏
-        - value: 'is-not-hidden'
-          label: 不隐藏
-    hide_recent_posts:
-      name: hide_recent_posts
-      label: 侧边栏最近文章-隐藏方式
-      type: select
-      default: 'is-not-hidden'
-      options:
-        - value: 'is-hidden-mobile'
-          label: 移动设备隐藏
-        - value: 'is-hidden-not-desktop'
-          label: 移动、平板设备隐藏
-        - value: 'is-hidden-desktop'
-          label: 桌面设备隐藏
-        - value: 'is-not-hidden'
-          label: 不隐藏
-    hide_recent_comments:
-      name: hide_recent_comments
-      label: 侧边栏最近评论-隐藏方式
-      type: select
-      default: 'is-not-hidden'
-      options:
-        - value: 'is-hidden-mobile'
-          label: 移动设备隐藏
-        - value: 'is-hidden-not-desktop'
-          label: 移动、平板设备隐藏
-        - value: 'is-hidden-desktop'
-          label: 桌面设备隐藏
-        - value: 'is-not-hidden'
-          label: 不隐藏
-    hide_categories:
-      name: hide_categories
-      label: 侧边栏分类-隐藏方式
-      type: select
-      default: 'is-not-hidden'
-      options:
-        - value: 'is-hidden-mobile'
-          label: 移动设备隐藏
-        - value: 'is-hidden-not-desktop'
-          label: 移动、平板设备隐藏
-        - value: 'is-hidden-desktop'
-          label: 桌面设备隐藏
-        - value: 'is-not-hidden'
-          label: 不隐藏
-    hide_tags:
-      name: hide_tags
-      label: 侧边栏标签-隐藏方式
-      type: select
-      default: 'is-not-hidden'
-      options:
-        - value: 'is-hidden-mobile'
-          label: 移动设备隐藏
-        - value: 'is-hidden-not-desktop'
-          label: 移动、平板设备隐藏
-        - value: 'is-hidden-desktop'
-          label: 桌面设备隐藏
-        - value: 'is-not-hidden'
-          label: 不隐藏
-    hide_tagcloud:
-      name: hide_tagcloud
-      label: 侧边栏标签云-隐藏方式
-      type: select
-      default: 'is-hidden-not-desktop'
-      options:
-        - value: 'is-hidden-mobile'
-          label: 移动设备隐藏
-        - value: 'is-hidden-not-desktop'
-          label: 移动、平板设备隐藏
-        - value: 'is-hidden-desktop'
-          label: 桌面设备隐藏
-        - value: 'is-not-hidden'
-          label: 不隐藏
-    hide_links:
-      name: hide_links
-      label: 侧边栏友链-隐藏方式
-      type: select
-      default: 'is-hidden-not-desktop'
-      options:
-        - value: 'is-hidden-mobile'
-          label: 移动设备隐藏
-        - value: 'is-hidden-not-desktop'
-          label: 移动、平板设备隐藏
-        - value: 'is-hidden-desktop'
-          label: 桌面设备隐藏
-        - value: 'is-not-hidden'
-          label: 不隐藏
+    sidebar_show:
+      name: sidebar_show
+      label: 侧边栏显示
+      type: repeater
+      description: '配置主题左右侧边栏显示位置和顺序。三列布局时<b>音乐模块</b>不能在右侧显示。'
+      default:
+        - type: profile
+          location: left
+          hide: 'is-not-hidden'
+        - type: toc
+          location: right
+          hide: 'is-hidden-not-desktop'
+        - type: notice
+          location: right
+          hide: 'is-not-hidden'
+        - type: recent_posts
+          location: right
+          hide: 'is-not-hidden'
+        - type: recent_comments
+          location: right
+          hide: 'is-not-hidden'
+        - type: categories
+          location: left
+          hide: 'is-not-hidden'
+        - type: tags
+          location: left
+          hide: 'is-not-hidden'
+        - type: links
+          location: right
+          hide: 'is-hidden-not-desktop'
+      children:
+        - name: type
+          type: select
+          label: 模块类型
+          default: profile
+          options:
+            - value: profile
+              label:  信息模块
+            - value: toc
+              label:  目录模块
+            - value: notice
+              label:  公告模块
+            - value: love
+              label:  恋爱墙模块
+            - value: music
+              label:  音乐模块
+            - value: ad_piece
+              label:  广告模块
+            - value: recent_posts
+              label:  最近文章模块
+            - value: recent_comments
+              label: 最近评论模块
+            - value: categories
+              label:  文章分类模块
+            - value: tags
+              label:  文章标签模块
+            - value: tagcloud
+              label:  文章标签云模块
+            - value: links
+              label:  友链模块
+        - name: location
+          label: 模块位置
+          type: radio
+          default: none
+          options:
+            - value: left
+              label:  左侧
+            - value: right
+              label:  右侧
+            - value: none
+              label:  关闭
+        - name: hide
+          label: 隐藏方式
+          type: select
+          default: 'is-not-hidden'
+          options:
+            - value: 'is-hidden-mobile'
+              label: 移动设备隐藏
+            - value: 'is-hidden-not-desktop'
+              label: 移动、平板设备隐藏
+            - value: 'is-hidden-desktop'
+              label: 桌面设备隐藏
+            - value: 'is-not-hidden'
+              label: 不隐藏
 sidebar_config:
   label: 侧边栏配置
   items:
@@ -1236,7 +959,7 @@ sidebar_config:
     music_config:
       name: music_config
       label: 侧边栏音乐-参数进阶配置
-      type: textarea
+      type: code
       placeholder: '请输入音乐参数配置'
       default: 'list-folded="true"
                 server="netease"
@@ -1291,19 +1014,19 @@ sidebar_config:
     ad_custom_code:
       name: ad_custom_code
       label: 侧边栏广告-自定义广告代码
-      type: textarea
+      type: code
       placeholder: '请输入广告代码'
       description: '在这里黏贴广告联盟提供的广告代码，<b><u>自定义广告代码</u></b> 模式时不能为空。'
     recent_posts_num:
       name: recent_posts_num
       label: 侧边栏最近文章-展示文章数量
-      type: text
+      type: number
       placeholder: 请输入数量数值
       default: 5
     recent_comments_num:
       name: recent_comments_num
       label: 侧边栏最近评论-展示评论数量
-      type: text
+      type: number
       placeholder: 请输入数量数值
       default: 5
     categories_more:
@@ -1321,7 +1044,7 @@ sidebar_config:
     categories_num:
       name: categories_num
       label: 侧边栏分类-展示分类数量
-      type: text
+      type: number
       placeholder: 请输入数量数值
       default: 10
     tags_more:
@@ -1339,7 +1062,7 @@ sidebar_config:
     tags_num:
       name: tags_num
       label: 侧边栏标签-展示标签数量
-      type: text
+      type: number
       placeholder: 请输入数量数值
       default: 18
     enable_tags_color:
@@ -1368,7 +1091,7 @@ sidebar_config:
     tagcloud_num:
       name: tagcloud_num
       label: 侧边栏标签云-展示标签数量
-      type: text
+      type: number
       placeholder: 请输入数量数值
       default: 32
     enable_tagcloud_color:
@@ -1397,7 +1120,7 @@ sidebar_config:
     links_num:
       name: links_num
       label: 侧边栏友链-展示友链数量
-      type: text
+      type: number
       placeholder: 请输入数量数值
       default: 10
 page_config:
@@ -1440,13 +1163,13 @@ page_config:
     link_comment_id:
       name: link_comment_id
       label: 友链页面-评论区ID
-      type: text
+      type: number
       placeholder: '请输入 ID'
       description: '友链页面没有 ID，需要指定一个自定义页面的 ID 用于评论，被指定的文章评论区将作为友链的评论区， <b>放空则不显示评论区。</b> '
     journals_fold_height:
       name: journals_fold_height
       label: 日志页面-动态内容折叠
-      type: text
+      type: number
       placeholder: '请输入高度数值（px）'
       description: '动态内容高度超出指定高度后默认进行折叠，指定的高度需大于等于 260px。'
     enable_journals_comment:
@@ -1523,15 +1246,15 @@ live2d:
     live2d_model_id:
       name: live2d_model_id
       label: '默认模型 ID'
-      type: text
-      default: '0'
+      type: number
+      default: 0
       placeholder: '请输入模型 ID'
       description: '默认模型 ID，参见 <a href="https://github.com/nineya/live2d-widget-model/blob/master/%E5%8F%AF%E7%94%A8model%E5%88%97%E8%A1%A8.md" target="_blank">可用model列表</a>。'
     live2d_model_textures_id:
       name: live2d_model_textures_id
       label: '默认材质 ID'
-      type: text
-      default: '0'
+      type: number
+      default: 0
       placeholder: '请输入材质 ID'
       description: '默认材质 ID，参见 <a href="https://github.com/nineya/live2d-widget-model/blob/master/%E5%8F%AF%E7%94%A8model%E5%88%97%E8%A1%A8.md" target="_blank">可用model列表</a>。'
     live2d_waifu_size:
@@ -1578,83 +1301,33 @@ live2d:
           label: 显示
         - value: false
           label: 关闭
-    live2d_can_turn_to_home_page:
-      name: live2d_can_turn_to_home_page
-      label: 显示「返回首页」按钮
-      type: switch
-      data-type: bool
-      default: true
+    live2d_tool_button:
+      name: live2d_tool_button
+      label: 显示工具栏按钮
+      type: checkbox
+      default:
+        - live2d_can_turn_to_home_page
+        - live2d_can_switch_hitokoto
+        - live2d_can_switch_model
+        - live2d_can_switch_textures
+        - live2d_can_take_screenshot
+        - live2d_can_turn_to_about_page
+        - live2d_can_close_live2d
       options:
-        - value: true
-          label: 显示
-        - value: false
-          label: 关闭
-    live2d_can_switch_hitokoto:
-      name: live2d_can_switch_hitokoto
-      label: 显示「一言」按钮
-      type: switch
-      data-type: bool
-      default: true
-      options:
-        - value: true
-          label: 显示
-        - value: false
-          label: 关闭
-    live2d_can_switch_model:
-      name: live2d_can_switch_model
-      label: 显示「切换模型」按钮
-      type: switch
-      data-type: bool
-      default: true
-      options:
-        - value: true
-          label: 显示
-        - value: false
-          label: 关闭
-    live2d_can_switch_textures:
-      name: live2d_can_switch_textures
-      label: 显示「切换材质」按钮
-      type: switch
-      data-type: bool
-      default: true
-      options:
-        - value: true
-          label: 显示
-        - value: false
-          label: 关闭
-    live2d_can_take_screenshot:
-      name: live2d_can_take_screenshot
-      label: 显示「截图」按钮
-      type: switch
-      data-type: bool
-      default: true
-      options:
-        - value: true
-          label: 显示
-        - value: false
-          label: 关闭
-    live2d_can_turn_to_about_page:
-      name: live2d_can_turn_to_about_page
-      label: 显示「关于」按钮
-      type: switch
-      data-type: bool
-      default: true
-      options:
-        - value: true
-          label: 显示
-        - value: false
-          label: 关闭
-    live2d_can_close_live2d:
-      name: live2d_can_close_live2d
-      label: 显示「关闭看板娘」按钮
-      type: switch
-      data-type: bool
-      default: true
-      options:
-        - value: true
-          label: 显示
-        - value: false
-          label: 关闭
+              - value: live2d_can_turn_to_home_page
+                label: 返回首页
+              - value: live2d_can_switch_hitokoto
+                label: 一言
+              - value: live2d_can_switch_model
+                label: 切换模型
+              - value: live2d_can_switch_textures
+                label: 切换材质
+              - value: live2d_can_take_screenshot
+                label: 截图
+              - value: live2d_can_turn_to_about_page
+                label: 关于
+              - value: live2d_can_close_live2d
+                label: 关闭看板娘
 enhance:
   label: 增强功能
   items:
@@ -1787,18 +1460,6 @@ enhance:
           label: 开启
         - value: false
           label: 关闭
-    enable_patch:
-      name: enable_patch
-      label: 补丁模式
-      type: switch
-      data-type: bool
-      default: true
-      description: '引入补丁脚本，实现对部分异常不更新主题进行 bug 修复！'
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
     enable_busuanzi:
       name: enable_busuanzi
       label: 开启 busuanzi 访客统计
@@ -1856,30 +1517,30 @@ custom:
     inline_css:
       name: inline_css
       label: "内嵌 CSS"
-      type: textarea
+      type: code
       placeholder: 请输入 CSS 样式内容
       description: '填入 <b><u>CSS</u></b> 代码，无需 <b><u>style</u></b> 标签，将插入 <b><u>head</u></b> 标签尾部。'
     external_js_head:
       name: external_js_head
       label: "外部 JS 链接（head）"
-      type: textarea
+      type: code
       placeholder: 请输入 script 标签
       description: '填入外部 <b><u>JS</u></b> 链接，需要 <b><u>script</u></b> 标签，可按情况指定 <b><u>async</u></b> 和 <b><u>defer</u></b> 属性，将插入 <b><u>head</u></b> 标签尾部。'
     inline_js_head:
       name: inline_js_head
       label: "内嵌 JS（head）"
-      type: textarea
+      type: code
       placeholder: 请输入 JS 代码内容
       description: '填入 <b><u>JS</u></b> 代码，无需 <b><u>script</u></b> 标签，将插入 <b><u>head</u></b> 标签尾部。'
     external_js_body:
       name: external_js_body
       label: "外部 JS 链接（body）"
-      type: textarea
+      type: code
       placeholder: 请输入 script 标签
       description: '填入外部 <b><u>JS</u></b> 链接，需要 <b><u>script</u></b> 标签，可按情况指定 <b><u>async</u></b> 和 <b><u>defer</u></b> 属性，将插入 <b><u>body</u></b> 标签尾部。'
     inline_js_body:
       name: inline_js_body
       label: "内嵌JS（body）"
-      type: textarea
+      type: code
       placeholder: 请输入 JS 代码内容
       description: '填入 <b><u>JS</u></b> 代码，无需 <b><u>script</u></b> 标签，将插入 <b><u>body</u></b> 标签尾部。'

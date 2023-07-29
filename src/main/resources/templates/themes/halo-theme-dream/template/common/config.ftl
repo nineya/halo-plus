@@ -91,7 +91,7 @@
     </#if>
     /** 主题配置 */
     const DreamConfig = {};
-    DreamConfig["theme_version"] = '${theme_version!}';
+    DreamConfig["theme_version"] = '${theme.version!}';
     DreamConfig["theme_base"] = '${theme_base!}';
     DreamConfig["access_key"] = '${settings.access_key!'dream'}';
     <#if settings.code_fold_line?? && settings.code_fold_line?number gte 20>
@@ -109,9 +109,7 @@
     <#if settings.website_time?? && settings.website_time!=''>
     DreamConfig["website_time"] = '${settings.website_time}';
     </#if>
-    <#if settings.sidebar_notice?? && settings.sidebar_notice!='none'>
     DreamConfig["notice_show_mode"] = '${settings.notice_show_mode!'index'}';
-    </#if>
     <#if settings.img_fold_height?? && settings.img_fold_height?number gte 400>
     DreamConfig["img_fold_height"] = ${settings.img_fold_height};
     </#if>
@@ -139,10 +137,13 @@
     <#if settings.enable_toutiao_push!false>
     DreamConfig["enable_toutiao_push"] = true;
     </#if>
+    <#if settings.show_img_name!true>
+    DreamConfig["show_img_name"] = true;
+    </#if>
     <#if settings.load_progress?? && settings.load_progress != 'none'>
     DreamConfig["load_progress"] = '${settings.load_progress}';
     </#if>
-    <#if settings.journals_share_image?? && settings.journals_share_image != 'none'>
+    <#if settings.journals_share_image?? && settings.journals_share_image != ''>
     DreamConfig["journals_share_image"] = '${settings.journals_share_image}';
     </#if>
     <#if settings.meting_api?? && settings.meting_api != ''>
@@ -160,16 +161,12 @@
     DreamConfig["live2d_waifu_size"] = '${settings.live2d_waifu_size!'280x260'}';
     DreamConfig["live2d_model_id"] = '${settings.live2d_model_id!'0'}';
     DreamConfig["live2d_model_textures_id"] = '${settings.live2d_model_textures_id!'0'}';
-    DreamConfig["live2d_show_tool_menu"] = ${(settings.live2d_show_tool_menu!true)?c};
-    DreamConfig["live2d_can_turn_to_home_page"] = ${(settings.live2d_can_turn_to_home_page!true)?c};
-    DreamConfig["live2d_can_switch_hitokoto"] = ${(settings.live2d_can_switch_hitokoto!true)?c};
-    DreamConfig["live2d_can_switch_model"] = ${(settings.live2d_can_switch_model!true)?c};
-    DreamConfig["live2d_can_switch_textures"] = ${(settings.live2d_can_switch_textures!true)?c};
-    DreamConfig["live2d_can_take_screenshot"] = ${(settings.live2d_can_take_screenshot!true)?c};
-    DreamConfig["live2d_can_turn_to_about_page"] = ${(settings.live2d_can_turn_to_about_page!true)?c};
-    DreamConfig["live2d_can_close_live2d"] = ${(settings.live2d_can_close_live2d!true)?c};
     DreamConfig["live2d_model_rand_mode"] = '${settings.live2d_model_rand_mode!'switch'}';
     DreamConfig["live2d_model_textures_rand_mode"] = '${settings.live2d_model_textures_rand_mode!'rand'}';
+    DreamConfig["live2d_show_tool_menu"] = ${(settings.live2d_show_tool_menu!true)?c};
+    <#list settings.live2d_tool_button as button>
+    DreamConfig["${button!}"] = true;
+    </#list>
     </#if>
 
     /** 配置主题模式 */
