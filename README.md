@@ -15,7 +15,7 @@
 <br />
 <a href="https://halo.run">Halo官网</a>
 <a href="https://bbs.halo.run">Halo官方社区</a>
-<a href="https://docs.halo.nineya.com">Halo-Plus文档</a>
+<a href="https://docs.halo-plus.nineya.com">Halo-Plus文档</a>
 <a href="https://github.com/nineya">GitHub</a>
 </p>
 
@@ -28,7 +28,7 @@
 下载最新的 Halo-Plus 运行包：
 
 ```bash
-curl -L https://github.com/nineya/halo-plus/releases/download/v1.0.0/halo-plus-1.0.0.jar --output halo-plus.jar
+curl -L https://github.com/nineya/halo-plus/releases/download/1.0.1/halo-plus-1.0.1.jar --output halo-plus.jar
 ```
 
 更多更新内容，见微信公众号：
@@ -45,11 +45,11 @@ docker run -it -d --name halo-plus -p 8090:8090 -v ~/.halo:/root/.halo-plus --re
 
 ## 生态
 
-| 项目                                                                         | 状态                                                                                                                                                                             | 描述                                     |
-| ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
-| [halo-admin](https://github.com/nineya/halo-puls-admin)                         | <a href="https://github.com/nineya/halo-admin/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/nineya/halo-puls-admin.svg?style=flat-square" /></a> | Web 管理端 UI，已内置在主应用            |
-| [halo-sdk-js](https://github.com/nineya/halo-sdk-js)                                 | <a href="https://github.com/nineya/halo-sdk-js"><img alt="npm release" src="https://img.shields.io/npm/v/@nineya/halo-content-api?style=flat-square"/></a>                             | JavaScript SDK                           |
-| [halo-comment-dream](https://github.com/nineya/halo-comment-dream)                     | <a href="https://www.npmjs.com/package/halo-comment-dream"><img alt="npm release" src="https://img.shields.io/npm/v/halo-comment-dream?style=flat-square"/></a>                              | 独立评论组件，可以非常方便的集成到主题中 |
+| 项目                                                                         | 状态                                                                                                                                                                            | 描述                                     |
+| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
+| [halo-admin](https://github.com/nineya/halo-puls-admin)                         | <a href="https://github.com/nineya/halo-admin/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/nineya/halo-admin.svg?style=flat-square" /></a> | Web 管理端 UI，已内置在主应用            |
+| [halo-sdk-js](https://github.com/nineya/halo-sdk-js)                                 | <a href="https://github.com/nineya/halo-sdk-js"><img alt="npm release" src="https://img.shields.io/npm/v/@nineya/halo-content-api?style=flat-square"/></a>                            | JavaScript SDK                           |
+| [halo-comment-dream](https://github.com/nineya/halo-comment-dream)                     | <a href="https://www.npmjs.com/package/halo-comment-dream"><img alt="npm release" src="https://img.shields.io/npm/v/halo-comment-dream?style=flat-square"/></a>                             | 独立评论组件，可以非常方便的集成到主题中 |
 | [halo-theme-dream](https://github.com/nineya/halo-theme-dream)                        | <a href="https://github.com/nineya/halo-theme-dream/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/nineya/halo-theme-dream.svg?style=flat-square" /></a> | Dream 博客主题            |
 
 ## 许可证
