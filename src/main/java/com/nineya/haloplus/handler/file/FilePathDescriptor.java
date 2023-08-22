@@ -77,6 +77,9 @@ public final class FilePathDescriptor {
         public Builder setOriginalName(String originalFileName) {
             Assert.notNull(originalFileName, "The originalFileName must not be null.");
             this.name = FilenameUtils.getBasename(originalFileName);
+            if (StringUtils.isEmpty(this.name)) {
+                this.name = "未知文件名";
+            }
             this.extension = FilenameUtils.getExtension(originalFileName);
             return this;
         }
