@@ -37,11 +37,12 @@ public interface AttachmentService extends CrudService<Attachment, Integer> {
      * Uploads file.
      *
      * @param file multipart file must not be null
+     * @param team attachment team type
      * @return attachment info
      * @throws FileOperationException throws when failed to filehandler the file
      */
     @NonNull
-    Attachment upload(@NonNull MultipartFile file);
+    Attachment upload(@NonNull MultipartFile file, String team);
 
     /**
      * Removes attachment permanently.
