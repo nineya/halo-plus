@@ -67,8 +67,8 @@ class AttachmentServiceImplTest {
         Mockito.when(optionService.isEnabledAbsolutePath()).thenReturn(false);
         AttachmentDTO attachmentDTO = attachmentService.convertToDto(attachment);
 
-        Assertions.assertEquals("/upload/2022/05/%E5%9B%BE%E7%89%87.png", attachmentDTO.getPath());
-        Assertions.assertEquals("/upload/2022/05/%E5%9B%BE%E7%89%87-thumbnail.png",
+        Assertions.assertEquals("/upload/2022/05/图片.png", attachmentDTO.getPath());
+        Assertions.assertEquals("/upload/2022/05/图片-thumbnail.png",
             attachmentDTO.getThumbPath());
         Mockito.verify(optionService, Mockito.times(1)).getBlogBaseUrl();
     }
@@ -86,8 +86,8 @@ class AttachmentServiceImplTest {
         Mockito.when(optionService.isEnabledAbsolutePath()).thenReturn(false);
         AttachmentDTO attachmentDTO = attachmentService.convertToDto(attachment);
 
-        Assertions.assertEquals("/upload/2022/05/100%251%23.png", attachmentDTO.getPath());
-        Assertions.assertEquals("/upload/2022/05/100%251%23-thumbnail.png",
+        Assertions.assertEquals("/upload/2022/05/100%1#.png", attachmentDTO.getPath());
+        Assertions.assertEquals("/upload/2022/05/100%1#-thumbnail.png",
             attachmentDTO.getThumbPath());
         Mockito.verify(optionService, Mockito.times(1)).getBlogBaseUrl();
     }
