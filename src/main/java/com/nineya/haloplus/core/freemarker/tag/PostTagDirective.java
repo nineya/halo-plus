@@ -17,6 +17,9 @@ import freemarker.template.TemplateModel;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 /**
@@ -60,6 +63,17 @@ public class PostTagDirective implements TemplateDirectiveModel {
                     int top = Integer.parseInt(params.get("top").toString());
                     env.setVariable("posts", builder.build()
                         .wrap(postRenderAssembler.convertToListVo(postService.listLatest(top))));
+                    break;
+                case "sort":
+                    int count = Integer.parseInt(params.get("count").toString());
+                    String sort = params.get("sort").toString();
+                    Sort.Direction direction = Sort.Direction.fromOptionalString(
+                        params.getOrDefault("direction", "ASC").toString())
+                        .orElse(Sort.Direction.ASC);
+                    Pageable pageable = PageRequest.of(0, count, direction, sort);
+                    env.setVariable("posts", builder.build()
+                        .wrap(postRenderAssembler.convertToListVo(
+                            postService.pageBy(PostStatus.PUBLISHED, pageable).getContent())));
                     break;
                 case "count":
                     env.setVariable("count",
