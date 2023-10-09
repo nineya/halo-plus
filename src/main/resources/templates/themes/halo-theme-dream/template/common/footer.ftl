@@ -25,11 +25,11 @@
                     <#if settings.enable_busuanzi!true>
                         <span class="icon-spot footer-truncation">
                             <span id="busuanzi_container_site_uv" style="display: none">
-                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <i class="ri-account-circle-line" aria-hidden="true"></i>
 					        <span class="stand" id="busuanzi_value_site_uv">0</span>访客
 					        </span>
                             <span id="busuanzi_container_site_pv" style="display: none">
-                            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                            <i class="ri-pie-chart-line" aria-hidden="true"></i>
 					        <span class="stand" id="busuanzi_value_site_pv">0</span>访问
                         </span>
 					</span>
@@ -38,7 +38,7 @@
                 </#if>
                 <#if settings.record_number_ps?? && settings.record_number_ps!=''>
                     <p><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${settings.record_number_ps?replace('[^\\d]','','ri')}"
-                          target="_blank" rel="noopener noreferrer nofollow"><img src="https://www.beian.gov.cn/portal/download" alt="公网安备" style="vertical-align: text-top; width: 1.2em; margin-right: 4px;"/>${settings.record_number_ps!}</a></p>
+                          target="_blank" rel="noopener noreferrer nofollow"><img src="https://beian.mps.gov.cn/img/logo01.dd7ff50e.png" alt="公网安备" style="vertical-align: text-top; width: 1.2em; margin-right: 4px;"/>${settings.record_number_ps!}</a></p>
                 </#if>
                 <#if settings.cloud_by_logo?? && settings.cloud_by_logo!=''>
                     <p>本站由<a class="cloud-driven" target="_blank"
