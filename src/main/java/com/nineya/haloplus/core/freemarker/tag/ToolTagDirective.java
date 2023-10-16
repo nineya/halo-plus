@@ -40,8 +40,10 @@ public class ToolTagDirective implements TemplateDirectiveModel {
                     int page = Integer.parseInt(params.get("page").toString());
                     int total = Integer.parseInt(params.get("total").toString());
                     int display = Integer.parseInt(params.get("display").toString());
+                    boolean isFull = Boolean.parseBoolean(
+                        params.getOrDefault("isFull", "false").toString());
                     env.setVariable("numbers",
-                        builder.build().wrap(HaloUtils.rainbow(page, total, display)));
+                        builder.build().wrap(HaloUtils.rainbow(page, total, display, isFull)));
                     break;
                 case "random":
                     int min = Integer.parseInt(params.get("min").toString());
