@@ -95,6 +95,11 @@ public class ThemeProperty {
     private String screenshots;
 
     /**
+     * editorOptions javaScript.
+     */
+    private String editorOptions;
+
+    /**
      * Post preset metas.
      */
     private Set<String> postMetaField;
