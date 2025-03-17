@@ -19,6 +19,8 @@
 <a href="https://github.com/nineya">GitHub</a>
 </p>
 
+个人博客交流，友链交换，欢迎加入 <a target="_blank" href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=D7ZuSNSnuFN4G5IdsCN26r8jOzBAXy1u&authKey=RmgU54gpmm1HkigLUIp7AHAdSOde1Qr%2Fjple0WaMpDXNWdEA6K6vTfeujixwtGv4&noverify=0&group_code=582535349">个人博客交流群：582535349</a>
+
 ------------------------------
 
 ## 快速开始
